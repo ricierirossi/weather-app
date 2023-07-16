@@ -5,13 +5,19 @@
         <AsideInfo
             class="aside-info"
             :temperature="currentWeather.temperature"
-            :weather="currentWeather.weatherCode"
+            :weather="currentWeather.weathercode"
+            :coordinates="coordinates"
+            :time="currentWeather.time"
         />
         <ForecastInfo
             class="forecast-info"
             :minTemperature="dailyWeather.temperature_2m_min"
             :maxTemperature="dailyWeather.temperature_2m_max"
-            :wind="currentWeather.windSpeed"
+            :wind="currentWeather.windspeed"
+            :winddirection="currentWeather.winddirection"
+            :uVIndex="dailyWeather.uv_index_max"
+            :sunrise="dailyWeather.sunrise"
+            :sunset="dailyWeather.sunset"
         />
     </div>
 </template>
@@ -24,28 +30,34 @@ export default {
     components: { AsideInfo, ForecastInfo },
     data: function () {
         return {
+            coordinates: [],
             currentWeather: {
                 temperature: null,
-                windSpeed: null,
-                windDirection: null,
-                weatherCode: null,
+                windspeed: null,
+                winddirection: null,
+                weathercode: null,
                 time: null,
                 relativeHumidity2m: null,
                 visibility: null
             },
             dailyWeather: {
                 temperature_2m_min: [],
-                temperature_2m_max: []
+                temperature_2m_max: [],
+                uv_index_max: [],
+                sunrise: [],
+                sunset: []
             }
         }
     },
     methods: {
         getDataCelsius() {
             fetch(
-                'https://api.open-meteo.com/v1/forecast?latitude=-23.5475&longitude=-46.6361&hourly=relativehumidity_2m,visibility&daily=temperature_2m_max,temperature_2m_min&current_weather=true&timezone=GMT'
+                'https://api.open-meteo.com/v1/forecast?latitude=-20.9933&longitude=-51.2775&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max&current_weather=true&timezone=auto'
             )
                 .then((resp) => resp.json())
                 .then((data) => {
+                    this.coordinates[0] = data.latitude
+                    this.coordinates[1] = data.longitude
                     this.currentWeather = data.current_weather
                     this.dailyWeather = data.daily
                 })
@@ -54,7 +66,7 @@ export default {
     mounted() {
         this.getDataCelsius()
         setTimeout(() => {
-            console.log(typeof this.dailyWeather.temperature_2m_max)
+            // console.log(this.dailyWeather.sunset)
         }, 3000)
     }
 }
