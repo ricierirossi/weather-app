@@ -16,10 +16,10 @@
                 <span>Today's Highlights</span>
             </div>
             <div class="highlights">
-                <WindStatus :wind="wind" />
-                <AirHumidity />
-                <VisibilityDistance />
-                <AirPressure />
+                <WindStatus :wind="wind" :winddirection="winddirection" />
+                <UVIndex :uVIndex="uVIndex[0]" />
+                <SunRise :sunrise="sunrise[0]" />
+                <SunSet :sunset="sunset[0]" />
             </div>
         </div>
         <PageFooter />
@@ -31,21 +31,30 @@ import CelsiusButton from './CelsiusButton.vue'
 import FahrenheitButton from './FahrenheitButton.vue'
 import DayCard from './DayCard.vue'
 import WindStatus from './WindStatus.vue'
-import AirHumidity from './AirHumidity.vue'
-import VisibilityDistance from './VisibilityDistance.vue'
-import AirPressure from './AirPressure.vue'
+import UVIndex from './UVIndex.vue'
+import SunRise from './SunRise.vue'
+import SunSet from './SunSet.vue'
 import PageFooter from './PageFooter.vue'
 
 export default {
-    props: ['minTemperature', 'maxTemperature', 'wind'],
+    props: [
+        'minTemperature',
+        'maxTemperature',
+        'wind',
+        'weather',
+        'winddirection',
+        'uVIndex',
+        'sunrise',
+        'sunset'
+    ],
     components: {
         CelsiusButton,
         FahrenheitButton,
         DayCard,
         WindStatus,
-        AirHumidity,
-        VisibilityDistance,
-        AirPressure,
+        UVIndex,
+        SunRise,
+        SunSet,
         PageFooter
     }
 }
