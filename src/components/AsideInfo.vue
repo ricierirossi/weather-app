@@ -1,12 +1,15 @@
 <template>
     <aside class="menu">
-        <div class="today">
+        <div class="buttons">
             <SearchButton />
             <LocalButton />
+        </div>
+        <div class="today">
+            <div>Icon</div>
             <div>{{ temperature }}</div>
             <div>{{ weather }}</div>
-            <div>Today • Weekenday, Monthday Month</div>
-            <div>Local</div>
+            <div>{{ time }}</div>
+            <div>{{ coordinates }}</div>
         </div>
     </aside>
 </template>
@@ -15,7 +18,7 @@
 import SearchButton from './SearchButton.vue'
 import LocalButton from './LocalButton.vue'
 export default {
-    props: ['temperature', 'weather'],
+    props: ['temperature', 'weather', 'coordinates', 'time'],
     components: { SearchButton, LocalButton }
 }
 </script>
@@ -25,9 +28,14 @@ export default {
     background-color: #1e213a;
 }
 
-.today {
+.buttons {
     display: flex;
     justify-content: space-around;
     margin-top: 40px;
+}
+
+.today {
+    display: flex;
+    flex-direction: column;
 }
 </style>
