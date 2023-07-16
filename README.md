@@ -14,3 +14,4 @@ Today's and next five days weather, wind speed and others.
 -   CSS 3
 -   JavaScript
 -   Vue.js
+-   <a href='https://open-meteo.com/en/docs'>Weather Forecast API</a>
