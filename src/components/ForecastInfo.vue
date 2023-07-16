@@ -1,0 +1,85 @@
+<template>
+    <div class="forecast">
+        <div class="degrees">
+            <CelsiusButton class="celsius" />
+            <FahrenheitButton />
+        </div>
+        <div class="days-area">
+            <DayCard :minTemperature="minTemperature[1]" :maxTemperature="maxTemperature[1]" />
+            <DayCard :minTemperature="minTemperature[2]" :maxTemperature="maxTemperature[2]" />
+            <DayCard :minTemperature="minTemperature[3]" :maxTemperature="maxTemperature[3]" />
+            <DayCard :minTemperature="minTemperature[4]" :maxTemperature="maxTemperature[4]" />
+            <DayCard :minTemperature="minTemperature[5]" :maxTemperature="maxTemperature[5]" />
+        </div>
+        <div class="highlight-area">
+            <div class="highlight-title">
+                <span>Today's Highlights</span>
+            </div>
+            <div class="highlights">
+                <WindStatus :wind="wind" />
+                <AirHumidity />
+                <VisibilityDistance />
+                <AirPressure />
+            </div>
+        </div>
+        <PageFooter />
+    </div>
+</template>
+
+<script>
+import CelsiusButton from './CelsiusButton.vue'
+import FahrenheitButton from './FahrenheitButton.vue'
+import DayCard from './DayCard.vue'
+import WindStatus from './WindStatus.vue'
+import AirHumidity from './AirHumidity.vue'
+import VisibilityDistance from './VisibilityDistance.vue'
+import AirPressure from './AirPressure.vue'
+import PageFooter from './PageFooter.vue'
+
+export default {
+    props: ['minTemperature', 'maxTemperature', 'wind'],
+    components: {
+        CelsiusButton,
+        FahrenheitButton,
+        DayCard,
+        WindStatus,
+        AirHumidity,
+        VisibilityDistance,
+        AirPressure,
+        PageFooter
+    }
+}
+</script>
+
+<style>
+.forecast {
+    background-color: #100e1d;
+    padding: 40px 120px 100px 150px;
+}
+
+.degrees {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.celsius {
+    margin-right: 15px;
+}
+
+.days-area {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.highlight-title {
+    margin-top: 72px;
+    margin-bottom: 32px;
+}
+
+.highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+}
+</style>
