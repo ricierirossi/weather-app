@@ -6,7 +6,7 @@ This project is a web application that brings weather conditions through fetch A
 
 ## Features
 
-Today's and next five days weather, wind speed and others.
+Today's and next five days weather, wind speed and others using <a href='https://open-meteo.com/en/docs'>Weather Forecast API</a>.
 
 ## Technologies
 
@@ -14,3 +14,4 @@ Today's and next five days weather, wind speed and others.
 -   CSS 3
 -   JavaScript
 -   Vue.js
+
