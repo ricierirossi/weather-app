@@ -14,7 +14,7 @@
             :minTemperature="dailyWeather.temperature_2m_min"
             :maxTemperature="dailyWeather.temperature_2m_max"
             :wind="currentWeather.windspeed"
-            :winddirection="currentWeather.winddirection"
+            :windDirectionCardinal="a"
             :uVIndex="dailyWeather.uv_index_max"
             :sunrise="dailyWeather.sunrise"
             :sunset="dailyWeather.sunset"
@@ -31,6 +31,7 @@ export default {
     data: function () {
         return {
             coordinates: [],
+            a: '',
             currentWeather: {
                 temperature: null,
                 windspeed: null,
@@ -61,12 +62,34 @@ export default {
                     this.currentWeather = data.current_weather
                     this.dailyWeather = data.daily
                 })
+        },
+        convertWindDirection(degree) {
+            const cardinalPosition = [
+                { position: 'North', initialDegree: 0, finalDegree: 22.5 },
+                { position: 'Northeast', initialDegree: 22.5, finalDegree: 67.5 },
+                { position: 'East', initialDegree: 67.5, finalDegree: 112.5 },
+                { position: 'Southeast', initialDegree: 112.5, finalDegree: 157.5 },
+                { position: 'Southeast', initialDegree: 157.5, finalDegree: 202.5 },
+                { position: 'Southwest', initialDegree: 202.5, finalDegree: 247.5 },
+                { position: 'West', initialDegree: 247.5, finalDegree: 292.5 },
+                { position: 'Northwest', initialDegree: 292.5, finalDegree: 337.5 },
+                { position: 'North', initialDegree: 337.5, finalDegree: 361 }
+            ]
+
+            cardinalPosition.forEach((objeto) => {
+                if (degree >= objeto.initialDegree && degree < objeto.finalDegree) {
+                    console.log(this.a)
+                    this.a = objeto.position
+                    console.log(this.a)
+                }
+            })
         }
     },
     mounted() {
         this.getDataCelsius()
+
         setTimeout(() => {
-            // console.log(this.dailyWeather.sunset)
+            this.convertWindDirection(this.currentWeather.winddirection)
         }, 3000)
     }
 }
