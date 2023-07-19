@@ -1,12 +1,16 @@
 <template>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap"
+        rel="stylesheet"
+    />
 
     <div class="home">
         <AsideInfo
             class="aside-info"
             :temperature="currentWeather.temperature"
             :weather="weatherDescription"
-            :coordinates="coordinates"
+            :cityName="cityName"
             :time="currentWeather.time"
         />
         <ForecastInfo
@@ -38,6 +42,7 @@ export default {
                 latitude: null,
                 longitude: null
             },
+            cityName: '',
             currentWeather: {
                 temperature: null,
                 windspeed: null,
@@ -70,6 +75,13 @@ export default {
                 this.coordinates.latitude = newPosition.coords.latitude
                 this.coordinates.longitude = newPosition.coords.longitude
             })
+        },
+        convertLocation(latitude, longitude) {
+            fetch(
+                `https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&apiKey=75e439d337d04c80915b5f23c6f31639`
+            )
+                .then((response) => response.json())
+                .then((result) => (this.cityName = result.features[0].properties.city))
         },
         getWeatherData(latitude, longitude) {
             fetch(
@@ -149,6 +161,7 @@ export default {
         coordinates: {
             handler(newCoordinate) {
                 this.getWeatherData(newCoordinate.latitude, newCoordinate.longitude)
+                this.convertLocation(newCoordinate.latitude, newCoordinate.longitude)
             },
             deep: true
         }
