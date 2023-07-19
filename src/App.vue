@@ -5,7 +5,7 @@
         <AsideInfo
             class="aside-info"
             :temperature="currentWeather.temperature"
-            :weather="currentWeather.weathercode"
+            :weather="weatherDescription"
             :coordinates="coordinates"
             :time="currentWeather.time"
         />
@@ -14,7 +14,7 @@
             :minTemperature="dailyWeather.temperature_2m_min"
             :maxTemperature="dailyWeather.temperature_2m_max"
             :wind="currentWeather.windspeed"
-            :windDirectionCardinal="a"
+            :windDirectionCardinal="windDirectionCardinal"
             :uVIndex="dailyWeather.uv_index_max"
             :sunrise="dailyWeather.sunrise"
             :sunset="dailyWeather.sunset"
@@ -26,12 +26,18 @@
 import AsideInfo from './components/AsideInfo.vue'
 import ForecastInfo from './components/ForecastInfo.vue'
 
+// const baseFURL = `https://api.open-meteo.com/v1/forecast?latitude=${this.coordinates.latitude}&longitude=${this.coordinates.longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max&current_weather=true&temperature_unit=fahrenheit&timezone=auto`
+// const baseCURL = `https://api.open-meteo.com/v1/forecast?latitude=${this.coordinates.latitude}&longitude=${this.coordinates.longitude}&&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max&current_weather=true&timezone=auto`
+// const fahrenheit = '&temperature_unit=fahrenheit'
+
 export default {
     components: { AsideInfo, ForecastInfo },
     data: function () {
         return {
-            coordinates: [],
-            a: '',
+            coordinates: {
+                latitude: null,
+                longitude: null
+            },
             currentWeather: {
                 temperature: null,
                 windspeed: null,
@@ -41,6 +47,8 @@ export default {
                 relativeHumidity2m: null,
                 visibility: null
             },
+            windDirectionCardinal: '',
+            weatherDescription: '',
             dailyWeather: {
                 temperature_2m_min: [],
                 temperature_2m_max: [],
@@ -51,16 +59,28 @@ export default {
         }
     },
     methods: {
-        getDataCelsius() {
+        getLocation() {
+            navigator.geolocation.getCurrentPosition((position) => {
+                this.coordinates.latitude = position.coords.latitude
+                this.coordinates.longitude = position.coords.longitude
+            })
+        },
+        watchLocation() {
+            navigator.geolocation.watchPosition((newPosition) => {
+                this.coordinates.latitude = newPosition.coords.latitude
+                this.coordinates.longitude = newPosition.coords.longitude
+            })
+        },
+        getWeatherData(latitude, longitude) {
             fetch(
-                'https://api.open-meteo.com/v1/forecast?latitude=-20.9933&longitude=-51.2775&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max&current_weather=true&timezone=auto'
+                `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max&current_weather=true&timezone=auto`
             )
                 .then((resp) => resp.json())
                 .then((data) => {
-                    this.coordinates[0] = data.latitude
-                    this.coordinates[1] = data.longitude
                     this.currentWeather = data.current_weather
                     this.dailyWeather = data.daily
+                    this.convertWindDirection(this.currentWeather.winddirection)
+                    this.convertWeatherCode(this.currentWeather.weathercode)
                 })
         },
         convertWindDirection(degree) {
@@ -76,21 +96,62 @@ export default {
                 { position: 'North', initialDegree: 337.5, finalDegree: 361 }
             ]
 
-            cardinalPosition.forEach((objeto) => {
-                if (degree >= objeto.initialDegree && degree < objeto.finalDegree) {
-                    console.log(this.a)
-                    this.a = objeto.position
-                    console.log(this.a)
+            cardinalPosition.forEach((positionInfo) => {
+                if (degree >= positionInfo.initialDegree && degree < positionInfo.finalDegree) {
+                    this.windDirectionCardinal = positionInfo.position
+                }
+            })
+        },
+        convertWeatherCode(code) {
+            const weatherCodes = [
+                { code: 0, description: 'Clear sky' },
+                { code: 1, description: 'Mainly clear' },
+                { code: 2, description: 'Partly cloudy' },
+                { code: 3, description: 'Overcast' },
+                { code: 45, description: 'Fog' },
+                { code: 48, description: 'Depositing rime fog' },
+                { code: 51, description: 'Drizzle: light' },
+                { code: 53, description: 'Drizzle: moderate' },
+                { code: 55, description: 'Drizzle: dense' },
+                { code: 56, description: 'Freezing drizzle: light' },
+                { code: 57, description: 'Freezing drizzle: dense' },
+                { code: 61, description: 'Rain: slight' },
+                { code: 63, description: 'Rain: moderate' },
+                { code: 65, description: 'Rain: heavy' },
+                { code: 66, description: 'Freezing Rain: light' },
+                { code: 67, description: 'Freezing Rain: heavy' },
+                { code: 71, description: 'Snow fall: slight' },
+                { code: 73, description: 'Snow fall: moderate' },
+                { code: 75, description: 'Snow fall: heavy' },
+                { code: 77, description: 'Snow grains' },
+                { code: 80, description: 'Rain showers: slight' },
+                { code: 81, description: 'Rain showers: moderate' },
+                { code: 82, description: 'Rain showers: violent' },
+                { code: 85, description: 'Snow showers slight' },
+                { code: 86, description: 'Snow showers: heavy' },
+                { code: 95, description: 'Thunderstorm: slight or moderate' },
+                { code: 96, description: 'Thunderstorm with slight hail' },
+                { code: 99, description: 'Thunderstorm with heavy hail' }
+            ]
+
+            weatherCodes.forEach((codeInfo) => {
+                if (code == codeInfo.code) {
+                    this.weatherDescription = codeInfo.description
                 }
             })
         }
     },
     mounted() {
-        this.getDataCelsius()
-
-        setTimeout(() => {
-            this.convertWindDirection(this.currentWeather.winddirection)
-        }, 3000)
+        this.getLocation()
+        this.watchLocation()
+    },
+    watch: {
+        coordinates: {
+            handler(newCoordinate) {
+                this.getWeatherData(newCoordinate.latitude, newCoordinate.longitude)
+            },
+            deep: true
+        }
     }
 }
 </script>
