@@ -14,6 +14,6 @@ export default {
 
 <style>
 .highlight-card {
-    background-color: brown;
+    background-color: #1e213a;
 }
 </style>
