@@ -2,13 +2,13 @@
     <div class="highlight-card">
         <div>Wind Status</div>
         <div>{{ wind }}</div>
-        <div>{{ winddirectioncardinal }}</div>
+        <div>{{ windDirectionCardinal }}</div>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['wind', 'winddirectioncardinal']
+    props: ['wind', 'windDirectionCardinal']
 }
 </script>
 
