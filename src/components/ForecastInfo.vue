@@ -16,7 +16,7 @@
                 <span>Today's Highlights</span>
             </div>
             <div class="highlights">
-                <WindStatus :wind="wind" :winddirectioncardinal="winddirectioncardinal" />
+                <WindStatus :wind="wind" :windDirectionCardinal="windDirectionCardinal" />
                 <UVIndex :uVIndex="uVIndex[0]" />
                 <SunRise :sunrise="sunrise[0]" />
                 <SunSet :sunset="sunset[0]" />
@@ -42,7 +42,7 @@ export default {
         'maxTemperature',
         'wind',
         'weather',
-        'winddirectioncardinal',
+        'windDirectionCardinal',
         'uVIndex',
         'sunrise',
         'sunset'
