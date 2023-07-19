@@ -9,7 +9,8 @@
             <div>{{ temperature }}</div>
             <div>{{ weather }}</div>
             <div>{{ time }}</div>
-            <div>{{ coordinates }}</div>
+            <div>{{ coordinates.latitude }}</div>
+            <div>{{ coordinates.longitude }}</div>
         </div>
     </aside>
 </template>
