@@ -8,9 +8,8 @@
             <div>Icon</div>
             <div>{{ temperature }}</div>
             <div>{{ weather }}</div>
-            <div>{{ time }}</div>
-            <div>{{ coordinates.latitude }}</div>
-            <div>{{ coordinates.longitude }}</div>
+            <div>Today • {{ today }}</div>
+            <div>{{ cityName }}</div>
         </div>
     </aside>
 </template>
@@ -19,8 +18,23 @@
 import SearchButton from './SearchButton.vue'
 import LocalButton from './LocalButton.vue'
 export default {
-    props: ['temperature', 'weather', 'coordinates', 'time'],
-    components: { SearchButton, LocalButton }
+    props: ['temperature', 'weather', 'cityName', 'time'],
+    components: { SearchButton, LocalButton },
+    data: function () {
+        return {
+            today: null
+        }
+    },
+    methods: {
+        formatDate(inputDate) {
+            const date = new Date(inputDate)
+            const options = { weekday: 'short', day: 'numeric', month: 'short' }
+            this.today = date.toLocaleString('en-US', options)
+        }
+    },
+    mounted() {
+        this.formatDate(this.time)
+    }
 }
 </script>
 
