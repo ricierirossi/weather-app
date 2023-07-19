@@ -15,7 +15,7 @@ export default {
 
 <style>
 .day-card {
-    background-color: brown;
+    background-color: #1e213a;
     width: 120px;
     height: 177px;
 }
