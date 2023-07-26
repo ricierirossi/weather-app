@@ -1,8 +1,7 @@
 <template>
     <div class="highlight-card">
         <div>Sunrise</div>
-        <div>{{ sunrise }}</div>
-        <div>Extra</div>
+        <div>{{ sunriseTime }}</div>
     </div>
 </template>
 
@@ -17,11 +16,15 @@ export default {
     methods: {
         getSunrise(time) {
             const moment = new Date(time)
-            console.log(moment.toLocaleTimeString('en-US'))
+            this.sunriseTime = moment.toLocaleTimeString('en-US')
         }
     },
-    mounted() {
-        this.getSunrise('2023-07-19T05:57')
+    watch: {
+        sunrise: {
+            handler(newSunrise) {
+                this.getSunrise(newSunrise)
+            }
+        }
     }
 }
 </script>
