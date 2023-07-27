@@ -12,6 +12,7 @@
             :weather="weatherDescription"
             :cityName="cityName"
             :time="currentWeather.time"
+            @get-coordinates="getClick"
         />
         <ForecastInfo
             class="forecast-info"
@@ -22,6 +23,9 @@
             :uVIndex="dailyWeather.uv_index_max"
             :sunrise="dailyWeather.sunrise"
             :sunset="dailyWeather.sunset"
+            :temperatureUnit="temperatureUnit"
+            @change-unit-f="receiveUnitF"
+            @change-unit-c="receiveUnitC"
         />
     </div>
 </template>
@@ -30,14 +34,11 @@
 import AsideInfo from './components/AsideInfo.vue'
 import ForecastInfo from './components/ForecastInfo.vue'
 
-// const baseFURL = `https://api.open-meteo.com/v1/forecast?latitude=${this.coordinates.latitude}&longitude=${this.coordinates.longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max&current_weather=true&temperature_unit=fahrenheit&timezone=auto`
-// const baseCURL = `https://api.open-meteo.com/v1/forecast?latitude=${this.coordinates.latitude}&longitude=${this.coordinates.longitude}&&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max&current_weather=true&timezone=auto`
-// const fahrenheit = '&temperature_unit=fahrenheit'
-
 export default {
     components: { AsideInfo, ForecastInfo },
     data: function () {
         return {
+            temperatureUnit: 'celsius',
             coordinates: {
                 latitude: null,
                 longitude: null
@@ -83,9 +84,9 @@ export default {
                 .then((response) => response.json())
                 .then((result) => (this.cityName = result.features[0].properties.city))
         },
-        getWeatherData(latitude, longitude) {
+        getWeatherData(latitude, longitude, unit) {
             fetch(
-                `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max&current_weather=true&timezone=auto`
+                `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max&current_weather=true&temperature_unit=${unit}&timezone=auto`
             )
                 .then((resp) => resp.json())
                 .then((data) => {
@@ -151,6 +152,22 @@ export default {
                     this.weatherDescription = codeInfo.description
                 }
             })
+        },
+        receiveUnitC() {
+            if (this.temperatureUnit === 'celsius') {
+                this.temperatureUnit = 'fahrenheit'
+            }
+        },
+        receiveUnitF() {
+            if (this.temperatureUnit === 'fahrenheit') {
+                this.temperatureUnit = 'celsius'
+            }
+        },
+        getClick() {
+            navigator.geolocation.getCurrentPosition((position) => {
+                this.coordinates.latitude = position.coords.latitude
+                this.coordinates.longitude = position.coords.longitude
+            })
         }
     },
     mounted() {
@@ -160,10 +177,19 @@ export default {
     watch: {
         coordinates: {
             handler(newCoordinate) {
-                this.getWeatherData(newCoordinate.latitude, newCoordinate.longitude)
+                this.getWeatherData(
+                    newCoordinate.latitude,
+                    newCoordinate.longitude,
+                    this.temperatureUnit
+                )
                 this.convertLocation(newCoordinate.latitude, newCoordinate.longitude)
             },
             deep: true
+        },
+        temperatureUnit: {
+            handler(newUnit) {
+                this.getWeatherData(this.coordinates.latitude, this.coordinates.longitude, newUnit)
+            }
         }
     }
 }
