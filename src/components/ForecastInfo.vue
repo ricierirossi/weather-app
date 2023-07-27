@@ -1,8 +1,8 @@
 <template>
     <div class="forecast">
         <div class="degrees">
-            <CelsiusButton class="celsius" />
-            <FahrenheitButton />
+            <CelsiusButton class="celsius" @click="changeUnitToF" />
+            <FahrenheitButton @click="changeUnitToC" />
         </div>
         <div class="days-area">
             <DayCard :minTemperature="minTemperature[1]" :maxTemperature="maxTemperature[1]" />
@@ -45,8 +45,10 @@ export default {
         'windDirectionCardinal',
         'uVIndex',
         'sunrise',
-        'sunset'
+        'sunset',
+        'temperatureUnit'
     ],
+
     components: {
         CelsiusButton,
         FahrenheitButton,
@@ -56,6 +58,14 @@ export default {
         SunRise,
         SunSet,
         PageFooter
+    },
+    methods: {
+        changeUnitToF() {
+            this.$emit('change-unit-f')
+        },
+        changeUnitToC() {
+            this.$emit('change-unit-c')
+        }
     }
 }
 </script>
