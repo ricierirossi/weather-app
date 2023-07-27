@@ -2,7 +2,7 @@
     <aside class="menu">
         <div class="buttons">
             <SearchButton />
-            <LocalButton />
+            <LocalButton @click="getCoordinates" />
         </div>
         <div class="today">
             <div>Icon</div>
@@ -30,11 +30,14 @@ export default {
             const date = new Date(inputDate)
             const options = { weekday: 'short', day: 'numeric', month: 'short' }
             this.today = date.toLocaleString('en-US', options)
+        },
+        getCoordinates() {
+            this.$emit('get-coordinates')
         }
-    },
-    mounted() {
-        this.formatDate(this.time)
     }
+    // beforeUpdate() {
+    //     this.formatDate(this.time)
+    // }
 }
 </script>
 
