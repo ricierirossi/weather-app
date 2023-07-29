@@ -8,12 +8,15 @@
     <div class="home">
         <AsideInfo
             class="aside-info"
+            v-if="visible"
             :temperature="currentWeather.temperature"
             :weather="weatherDescription"
             :cityName="cityName"
             :time="currentWeather.time"
-            @get-coordinates="getClick"
+            @get-coordinates="getLocation"
+            @open-close-menu="openCloseMenu"
         />
+        <AsideMenu v-if="!visible" @choose-city="getCity" @open-close-menu="openCloseMenu" />
         <ForecastInfo
             class="forecast-info"
             :minTemperature="dailyWeather.temperature_2m_min"
@@ -32,10 +35,11 @@
 
 <script>
 import AsideInfo from './components/AsideInfo.vue'
+import AsideMenu from './components/AsideMenu.vue'
 import ForecastInfo from './components/ForecastInfo.vue'
 
 export default {
-    components: { AsideInfo, ForecastInfo },
+    components: { AsideInfo, AsideMenu, ForecastInfo },
     data: function () {
         return {
             temperatureUnit: 'celsius',
@@ -61,7 +65,8 @@ export default {
                 uv_index_max: [],
                 sunrise: [],
                 sunset: []
-            }
+            },
+            visible: true
         }
     },
     methods: {
@@ -163,11 +168,12 @@ export default {
                 this.temperatureUnit = 'celsius'
             }
         },
-        getClick() {
-            navigator.geolocation.getCurrentPosition((position) => {
-                this.coordinates.latitude = position.coords.latitude
-                this.coordinates.longitude = position.coords.longitude
-            })
+        getCity(lat, long) {
+            this.coordinates.latitude = lat
+            this.coordinates.longitude = long
+        },
+        openCloseMenu() {
+            this.visible = !this.visible
         }
     },
     mounted() {
