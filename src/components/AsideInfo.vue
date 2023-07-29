@@ -1,7 +1,7 @@
 <template>
     <aside class="menu">
         <div class="buttons">
-            <SearchButton />
+            <SearchButton @click="openCloseMenu" />
             <LocalButton @click="getCoordinates" />
         </div>
         <div class="today">
@@ -30,6 +30,9 @@ export default {
             const date = new Date(inputDate)
             const options = { weekday: 'short', day: 'numeric', month: 'short' }
             this.today = date.toLocaleString('en-US', options)
+        },
+        openCloseMenu() {
+            this.$emit('open-close-menu')
         },
         getCoordinates() {
             this.$emit('get-coordinates')
