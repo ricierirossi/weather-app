@@ -6,9 +6,11 @@
             <SearchCity />
         </div>
         <div class="cities">
-            <div class="city" :lat="-23.55052" long="-46.633309" @click="chooseCity">São Paulo</div>
-            <div class="city" :lat="51.507351" long="-0.127758" @click="chooseCity">London</div>
-            <div class="city" :lat="55.755826" long="37.6173" @click="chooseCity">Moscow</div>
+            <div class="city" :lat="-23.55052" :long="-46.633309" @click="chooseCity">
+                São Paulo
+            </div>
+            <div class="city" :lat="51.507351" :long="-0.127758" @click="chooseCity">London</div>
+            <div class="city" :lat="55.755826" :long="37.6173" @click="chooseCity">Moscow</div>
         </div>
     </aside>
 </template>
