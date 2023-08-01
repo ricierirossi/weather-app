@@ -26,6 +26,7 @@ export default {
             const lat = e.target.getAttribute('lat')
             const long = e.target.getAttribute('long')
             this.$emit('choose-city', lat, long)
+            this.openCloseMenu()
         },
         openCloseMenu() {
             this.$emit('open-close-menu')
