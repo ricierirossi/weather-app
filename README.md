@@ -2,7 +2,7 @@
 
 ## Description
 
-This project is a web application that brings weather conditions through fetch API. Developint to improve my knowledge on APIs, Vue.js, javaScript, CSS and HTML.
+This project is a web application that brings weather conditions through fetch API. Developing to improve my knowledge on APIs, Vue.js, javaScript, CSS and HTML.
 
 ## Features
 
