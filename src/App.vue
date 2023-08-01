@@ -25,6 +25,7 @@
         />
         <ForecastInfo
             class="forecast-info"
+            :day="dailyWeather.time"
             :minTemperature="dailyWeather.temperature_2m_min"
             :maxTemperature="dailyWeather.temperature_2m_max"
             :wind="currentWeather.windspeed"
@@ -66,6 +67,7 @@ export default {
             windDirectionCardinal: '',
             weatherDescription: '',
             dailyWeather: {
+                time: [],
                 temperature_2m_min: [],
                 temperature_2m_max: [],
                 uv_index_max: [],
@@ -87,6 +89,7 @@ export default {
             navigator.geolocation.watchPosition((newPosition) => {
                 this.coordinates.latitude = newPosition.coords.latitude
                 this.coordinates.longitude = newPosition.coords.longitude
+                navigator.geolocation.clearWatch(1)
             })
         },
         convertLocation(latitude, longitude) {
