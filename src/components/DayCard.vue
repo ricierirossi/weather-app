@@ -1,6 +1,6 @@
 <template>
     <div class="day-card">
-        <div>Day</div>
+        <div>{{ day }}</div>
         <div>Icon</div>
         <div>{{ minTemperature }}</div>
         <div>{{ maxTemperature }}</div>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-    props: ['minTemperature', 'maxTemperature']
+    props: ['day', 'minTemperature', 'maxTemperature']
 }
 </script>
 
