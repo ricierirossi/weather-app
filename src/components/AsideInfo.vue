@@ -37,10 +37,10 @@ export default {
         getCoordinates() {
             this.$emit('get-coordinates')
         }
+    },
+    beforeUpdate() {
+        this.formatDate(this.time)
     }
-    // beforeUpdate() {
-    //     this.formatDate(this.time)
-    // }
 }
 </script>
 
