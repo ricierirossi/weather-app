@@ -16,7 +16,13 @@
             @get-coordinates="getLocation"
             @open-close-menu="openCloseMenu"
         />
-        <AsideMenu v-if="!visible" @choose-city="getCity" @open-close-menu="openCloseMenu" />
+        <AsideMenu
+            v-if="!visible"
+            :searchedLocation="searchedLocation"
+            @choose-city="getCity"
+            @open-close-menu="openCloseMenu"
+            @received-city="searchCity"
+        />
         <ForecastInfo
             class="forecast-info"
             :minTemperature="dailyWeather.temperature_2m_min"
@@ -66,7 +72,8 @@ export default {
                 sunrise: [],
                 sunset: []
             },
-            visible: true
+            visible: true,
+            searchedLocation: ''
         }
     },
     methods: {
@@ -173,6 +180,18 @@ export default {
             this.coordinates.longitude = long
         },
         openCloseMenu() {
+            this.visible = !this.visible
+        },
+        searchCity(city) {
+            fetch(
+                `https://api.geoapify.com/v1/geocode/search?text=${city}&lang=en&limit=10&type=city&apiKey=75e439d337d04c80915b5f23c6f31639`
+            )
+                .then((response) => response.json())
+                .then((result) => {
+                    this.coordinates.latitude = result.features[0].properties.lat
+                    this.coordinates.longitude = result.features[0].properties.lon
+                })
+                .catch(() => console.log('City not foud. Check spelling and try again.'))
             this.visible = !this.visible
         }
     },
