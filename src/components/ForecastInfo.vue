@@ -5,11 +5,31 @@
             <FahrenheitButton @click="changeUnitToC" />
         </div>
         <div class="days-area">
-            <DayCard :minTemperature="minTemperature[1]" :maxTemperature="maxTemperature[1]" />
-            <DayCard :minTemperature="minTemperature[2]" :maxTemperature="maxTemperature[2]" />
-            <DayCard :minTemperature="minTemperature[3]" :maxTemperature="maxTemperature[3]" />
-            <DayCard :minTemperature="minTemperature[4]" :maxTemperature="maxTemperature[4]" />
-            <DayCard :minTemperature="minTemperature[5]" :maxTemperature="maxTemperature[5]" />
+            <DayCard
+                day="Tomorrow"
+                :minTemperature="minTemperature[1]"
+                :maxTemperature="maxTemperature[1]"
+            />
+            <DayCard
+                :day="day[2]"
+                :minTemperature="minTemperature[2]"
+                :maxTemperature="maxTemperature[2]"
+            />
+            <DayCard
+                :day="day[3]"
+                :minTemperature="minTemperature[3]"
+                :maxTemperature="maxTemperature[3]"
+            />
+            <DayCard
+                :day="day[4]"
+                :minTemperature="minTemperature[4]"
+                :maxTemperature="maxTemperature[4]"
+            />
+            <DayCard
+                :day="day[5]"
+                :minTemperature="minTemperature[5]"
+                :maxTemperature="maxTemperature[5]"
+            />
         </div>
         <div class="highlight-area">
             <div class="highlight-title">
@@ -38,6 +58,7 @@ import PageFooter from './PageFooter.vue'
 
 export default {
     props: [
+        'day',
         'minTemperature',
         'maxTemperature',
         'wind',
