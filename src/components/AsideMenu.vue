@@ -2,8 +2,7 @@
     <aside class="menu">
         <div @click="openCloseMenu">x</div>
         <div class="buttons">
-            <SearchLocation />
-            <SearchCity />
+            <SearchLocation :searchedLocation="searchedLocation" @submit-city="onSubmittedCity" />
         </div>
         <div class="cities">
             <div class="city" :lat="-23.55052" :long="-46.633309" @click="chooseCity">
@@ -17,9 +16,11 @@
 
 <script>
 import SearchLocation from './SearchLocation.vue'
-import SearchCity from './SearchCity.vue'
+
 export default {
-    components: { SearchLocation, SearchCity },
+    components: { SearchLocation },
+    props: ['searchedLocation'],
+
     methods: {
         chooseCity(e) {
             const lat = e.target.getAttribute('lat')
@@ -28,6 +29,9 @@ export default {
         },
         openCloseMenu() {
             this.$emit('open-close-menu')
+        },
+        onSubmittedCity(city) {
+            this.$emit('received-city', city)
         }
     }
 }
