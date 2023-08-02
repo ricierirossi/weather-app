@@ -13,6 +13,7 @@
             :weather="weatherDescription"
             :cityName="cityName"
             :time="currentWeather.time"
+            :temperatureUnit="temperatureUnit"
             @get-coordinates="getLocation"
             @open-close-menu="openCloseMenu"
         />
@@ -25,7 +26,7 @@
         />
         <ForecastInfo
             class="forecast-info"
-            :day="dailyWeather.time"
+            :days="dailyWeather.time"
             :minTemperature="dailyWeather.temperature_2m_min"
             :maxTemperature="dailyWeather.temperature_2m_max"
             :wind="currentWeather.windspeed"
@@ -34,8 +35,8 @@
             :sunrise="dailyWeather.sunrise"
             :sunset="dailyWeather.sunset"
             :temperatureUnit="temperatureUnit"
-            @change-unit-f="receiveUnitF"
-            @change-unit-c="receiveUnitC"
+            @change-unit-to-f="receiveUnitF"
+            @change-unit-to-c="receiveUnitC"
         />
     </div>
 </template>
@@ -169,13 +170,13 @@ export default {
             })
         },
         receiveUnitC() {
-            if (this.temperatureUnit === 'celsius') {
-                this.temperatureUnit = 'fahrenheit'
+            if (this.temperatureUnit === 'fahrenheit') {
+                this.temperatureUnit = 'celsius'
             }
         },
         receiveUnitF() {
-            if (this.temperatureUnit === 'fahrenheit') {
-                this.temperatureUnit = 'celsius'
+            if (this.temperatureUnit === 'celsius') {
+                this.temperatureUnit = 'fahrenheit'
             }
         },
         getCity(lat, long) {
