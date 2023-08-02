@@ -1,7 +1,7 @@
 <template>
     <div class="highlight-card">
         <div>Wind Status</div>
-        <div>{{ wind }}</div>
+        <div>{{ wind + ' km/h' }}</div>
         <div>{{ windDirectionCardinal }}</div>
     </div>
 </template>
