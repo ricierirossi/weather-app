@@ -1,34 +1,39 @@
 <template>
     <div class="forecast">
         <div class="degrees">
-            <CelsiusButton class="celsius" @click="changeUnitToF" />
-            <FahrenheitButton @click="changeUnitToC" />
+            <CelsiusButton class="celsius" @click="changeUnitToC" />
+            <FahrenheitButton @click="changeUnitToF" />
         </div>
         <div class="days-area">
             <DayCard
                 day="Tomorrow"
                 :minTemperature="minTemperature[1]"
                 :maxTemperature="maxTemperature[1]"
+                :temperatureUnit="temperatureUnit"
             />
             <DayCard
                 :day="day[2]"
                 :minTemperature="minTemperature[2]"
                 :maxTemperature="maxTemperature[2]"
+                :temperatureUnit="temperatureUnit"
             />
             <DayCard
                 :day="day[3]"
                 :minTemperature="minTemperature[3]"
                 :maxTemperature="maxTemperature[3]"
+                :temperatureUnit="temperatureUnit"
             />
             <DayCard
                 :day="day[4]"
                 :minTemperature="minTemperature[4]"
                 :maxTemperature="maxTemperature[4]"
+                :temperatureUnit="temperatureUnit"
             />
             <DayCard
                 :day="day[5]"
                 :minTemperature="minTemperature[5]"
                 :maxTemperature="maxTemperature[5]"
+                :temperatureUnit="temperatureUnit"
             />
         </div>
         <div class="highlight-area">
@@ -58,7 +63,7 @@ import PageFooter from './PageFooter.vue'
 
 export default {
     props: [
-        'day',
+        'days',
         'minTemperature',
         'maxTemperature',
         'wind',
@@ -80,13 +85,25 @@ export default {
         SunSet,
         PageFooter
     },
+    data: function () {
+        return {
+            day: []
+        }
+    },
     methods: {
         changeUnitToF() {
-            this.$emit('change-unit-f')
+            this.$emit('change-unit-to-f')
         },
         changeUnitToC() {
-            this.$emit('change-unit-c')
+            this.$emit('change-unit-to-c')
         }
+    },
+    beforeUpdate() {
+        this.days.forEach((weekDay) => {
+            const date = new Date(weekDay)
+            const options = { weekday: 'short', day: 'numeric', month: 'short' }
+            this.day.push(date.toLocaleString('en-US', options))
+        })
     }
 }
 </script>
