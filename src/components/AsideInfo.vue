@@ -6,7 +6,11 @@
         </div>
         <div class="today">
             <div>Icon</div>
-            <div>{{ temperature }}</div>
+            <div>
+                {{ temperature }}
+                <span v-if="unit == 'celsius'">°C</span>
+                <span v-else>°F</span>
+            </div>
             <div>{{ weather }}</div>
             <div>Today • {{ today }}</div>
             <div>{{ cityName }}</div>
@@ -18,11 +22,12 @@
 import SearchButton from './SearchButton.vue'
 import LocalButton from './LocalButton.vue'
 export default {
-    props: ['temperature', 'weather', 'cityName', 'time'],
+    props: ['temperature', 'weather', 'cityName', 'time', 'temperatureUnit'],
     components: { SearchButton, LocalButton },
     data: function () {
         return {
-            today: null
+            today: null,
+            unit: this.temperatureUnit
         }
     },
     methods: {
@@ -40,6 +45,13 @@ export default {
     },
     beforeUpdate() {
         this.formatDate(this.time)
+    },
+    watch: {
+        temperatureUnit: {
+            handler(newUnit) {
+                this.unit = newUnit
+            }
+        }
     }
 }
 </script>
