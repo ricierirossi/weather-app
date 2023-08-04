@@ -11,6 +11,7 @@
             v-if="visible"
             :temperature="currentWeather.temperature"
             :weather="weatherDescription"
+            :icons="icons"
             :cityName="cityName"
             :time="currentWeather.time"
             :temperatureUnit="temperatureUnit"
@@ -18,6 +19,7 @@
             @open-close-menu="openCloseMenu"
         />
         <AsideMenu
+            class="aside-menu"
             v-if="!visible"
             :searchedLocation="searchedLocation"
             @choose-city="getCity"
@@ -65,6 +67,7 @@ export default {
                 relativeHumidity2m: null,
                 visibility: null
             },
+            icons: '',
             windDirectionCardinal: '',
             weatherDescription: '',
             dailyWeather: {
@@ -133,39 +136,52 @@ export default {
         },
         convertWeatherCode(code) {
             const weatherCodes = [
-                { code: 0, description: 'Clear sky' },
-                { code: 1, description: 'Mainly clear' },
-                { code: 2, description: 'Partly cloudy' },
-                { code: 3, description: 'Overcast' },
-                { code: 45, description: 'Fog' },
-                { code: 48, description: 'Depositing rime fog' },
-                { code: 51, description: 'Drizzle: light' },
-                { code: 53, description: 'Drizzle: moderate' },
-                { code: 55, description: 'Drizzle: dense' },
-                { code: 56, description: 'Freezing drizzle: light' },
-                { code: 57, description: 'Freezing drizzle: dense' },
-                { code: 61, description: 'Rain: slight' },
-                { code: 63, description: 'Rain: moderate' },
-                { code: 65, description: 'Rain: heavy' },
-                { code: 66, description: 'Freezing Rain: light' },
-                { code: 67, description: 'Freezing Rain: heavy' },
-                { code: 71, description: 'Snow fall: slight' },
-                { code: 73, description: 'Snow fall: moderate' },
-                { code: 75, description: 'Snow fall: heavy' },
-                { code: 77, description: 'Snow grains' },
-                { code: 80, description: 'Rain showers: slight' },
-                { code: 81, description: 'Rain showers: moderate' },
-                { code: 82, description: 'Rain showers: violent' },
-                { code: 85, description: 'Snow showers slight' },
-                { code: 86, description: 'Snow showers: heavy' },
-                { code: 95, description: 'Thunderstorm: slight or moderate' },
-                { code: 96, description: 'Thunderstorm with slight hail' },
-                { code: 99, description: 'Thunderstorm with heavy hail' }
+                { code: 0, description: 'Clear sky', icon: 'clear-day' },
+                { code: 1, description: 'Mainly clear', icon: 'clear-day' },
+                { code: 2, description: 'Partly cloudy', icon: 'partly-cloudy-day' },
+                { code: 3, description: 'Overcast', icon: 'overcast' },
+                { code: 45, description: 'Fog', icon: 'fog' },
+                { code: 48, description: 'Depositing rime fog', icon: 'mist' },
+                { code: 51, description: 'Drizzle: light', icon: 'drizzle' },
+                { code: 53, description: 'Drizzle: moderate', icon: 'overcast-drizzle' },
+                { code: 55, description: 'Drizzle: dense', icon: 'extreme-drizzle' },
+                { code: 56, description: 'Freezing drizzle: light', icon: 'sleet' },
+                { code: 57, description: 'Freezing drizzle: dense', icon: 'extreme-sleet' },
+                { code: 61, description: 'Rain: slight', icon: 'rain' },
+                { code: 63, description: 'Rain: moderate', icon: 'overcast-rain' },
+                { code: 65, description: 'Rain: heavy', icon: 'extreme-rain' },
+                { code: 66, description: 'Freezing Rain: light', icon: 'not-available' },
+                { code: 67, description: 'Freezing Rain: heavy', icon: 'not-available' },
+                { code: 71, description: 'Snow fall: slight', icon: 'snow' },
+                { code: 73, description: 'Snow fall: moderate', icon: 'overcast-snow' },
+                { code: 75, description: 'Snow fall: heavy', icon: 'extreme-snow' },
+                { code: 77, description: 'Snow grains', icon: 'snow' },
+                { code: 80, description: 'Rain showers: slight', icon: 'rain' },
+                { code: 81, description: 'Rain showers: moderate', icon: 'overcast-rain' },
+                { code: 82, description: 'Rain showers: violent', icon: 'extreme-rain' },
+                { code: 85, description: 'Snow showers slight', icon: 'snow' },
+                { code: 86, description: 'Snow showers: heavy', icon: 'extreme-snow' },
+                {
+                    code: 95,
+                    description: 'Thunderstorm: slight or moderate',
+                    icon: 'thunderstorms'
+                },
+                {
+                    code: 96,
+                    description: 'Thunderstorm with slight hail',
+                    icon: 'thunderstorms-overcast-snow'
+                },
+                {
+                    code: 99,
+                    description: 'Thunderstorm with heavy hail',
+                    icon: 'thunderstorms-extreme-snow'
+                }
             ]
 
             weatherCodes.forEach((codeInfo) => {
                 if (code == codeInfo.code) {
                     this.weatherDescription = codeInfo.description
+                    this.icons = codeInfo.icon
                 }
             })
         },
@@ -224,18 +240,20 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .home {
     display: flex;
-    color: white;
+    color: #e7e7eb;
+    width: 1440px;
     height: 100vh;
 }
 
-.aside-info {
-    flex-basis: 30%;
+.aside-info,
+.aside-menu {
+    width: 459px;
 }
 
 .forecast-info {
-    flex-basis: 70%;
+    width: 981px;
 }
 </style>
