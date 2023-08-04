@@ -38,21 +38,21 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .menu {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    background-color: #1e213a;
+    background-color: #1e213a; */
 }
 
 .buttons {
-    display: flex;
+    /* display: flex;
     justify-content: space-around;
-    margin-top: 40px;
+    margin-top: 40px; */
 }
 
 .cities {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
 }
 </style>
