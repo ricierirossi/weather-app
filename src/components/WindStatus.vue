@@ -12,7 +12,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .highlight-card {
     background-color: brown;
 }

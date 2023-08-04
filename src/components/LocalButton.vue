@@ -8,7 +8,7 @@
 export default {}
 </script>
 
-<style>
+<style scoped>
 .local {
     background-color: #ffffff33;
     box-shadow: 0px 4px 4px 0px #00000040;

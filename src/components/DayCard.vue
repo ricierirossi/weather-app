@@ -33,7 +33,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .day-card {
     background-color: #1e213a;
     width: 120px;

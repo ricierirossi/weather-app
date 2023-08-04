@@ -8,7 +8,7 @@
 export default {}
 </script>
 
-<style>
+<style scoped>
 .fahrenheit {
     background-color: red;
     border-radius: 50%;

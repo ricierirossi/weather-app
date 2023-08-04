@@ -11,7 +11,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .highlight-card {
     background-color: #1e213a;
 }
