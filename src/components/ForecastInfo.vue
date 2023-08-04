@@ -108,9 +108,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .forecast {
     background-color: #100e1d;
+    box-sizing: border-box;
     padding: 40px 120px 100px 150px;
 }
 
