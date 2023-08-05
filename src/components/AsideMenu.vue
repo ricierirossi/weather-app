@@ -1,6 +1,6 @@
 <template>
     <aside class="menu">
-        <div @click="openCloseMenu">x</div>
+        <span class="material-icons close" @click="openCloseMenu"> close </span>
         <div class="buttons">
             <SearchLocation :searchedLocation="searchedLocation" @submit-city="onSubmittedCity" />
         </div>
@@ -40,9 +40,17 @@ export default {
 
 <style scoped>
 .menu {
-    /* display: flex;
-    flex-direction: column;
-    background-color: #1e213a; */
+    background-color: #1e213a;
+    width: 459px;
+}
+
+.close {
+    margin-top: 20px;
+    margin-left: 388px;
+    text-align: right;
+    height: 18px;
+    width: 18px;
+    color: #e7e7eb;
 }
 
 .buttons {
