@@ -9,14 +9,21 @@
                 <div class="clouds"></div>
                 <img class="icon" :src="icon" width="180" height="180" />
             </div>
-            <div class="temperature">
-                {{ temperature }}
+            <div class="temperature-info">
+                <span class="temperature">{{ temperature }}</span>
                 <span class="degree" v-if="unit == 'celsius'">°C</span>
                 <span class="degree" v-else>°F</span>
             </div>
-            <div>{{ weather }}</div>
-            <div>Today • {{ today }}</div>
-            <div>{{ cityName }}</div>
+            <div class="weather">{{ weather }}</div>
+            <div class="today-date">
+                <span>Today</span>
+                <span class="dot">•</span>
+                <span>{{ today }}</span>
+            </div>
+            <div class="city">
+                <span class="material-icons place"> place </span>
+                <span class="city-name">{{ cityName }}</span>
+            </div>
         </div>
     </aside>
 </template>
@@ -78,8 +85,7 @@ export default {
 
 .buttons {
     display: flex;
-    margin-top: 42px;
-    margin-left: 46px;
+    margin: 42px 0 21px 46px;
 }
 
 .local-button {
@@ -113,17 +119,57 @@ export default {
     opacity: 100%;
 }
 
+.temperature-info {
+    margin-top: 33px;
+}
+
 .temperature {
-    font-weight: 100;
-    font-size: 48px;
-    line-height: 56.35px;
+    font-weight: 500;
+    font-size: 144px;
+    line-height: 169.06px;
     color: #e7e7eb;
 }
 
 .degree {
-    font-weight: 500;
-    font-size: 14.4px;
-    line-height: 169.06px;
+    font-weight: 100;
+    font-size: 48px;
     color: #a09fb1;
+}
+
+.weather {
+    margin-top: 87px;
+    font-size: 36px;
+    font-weight: 600;
+    color: #88869d;
+}
+
+.today-date {
+    margin-top: 87px;
+    margin-bottom: 31px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #88869d;
+}
+
+.dot {
+    margin: 0 16px 0 16px;
+}
+
+.city {
+    display: flex;
+    justify-content: center;
+}
+
+.place {
+    height: 19px;
+    width: 14px;
+    color: #88869d;
+    margin-right: 15px;
+}
+
+.city-name {
+    font-weight: 600px;
+    font-size: 18px;
+    color: #88869d;
 }
 </style>
