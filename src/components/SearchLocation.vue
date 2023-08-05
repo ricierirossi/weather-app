@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="submitCity">
-        <input placeholder="search location" type="text" v-model="city" />
+        <input class="search-box" placeholder="search location" type="text" v-model="city" />
         <input class="submit-button" type="submit" />
     </form>
 </template>
