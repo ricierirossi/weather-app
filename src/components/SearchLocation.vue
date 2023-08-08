@@ -26,19 +26,24 @@ export default {
 <style scoped>
 form {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     margin-top: 38px;
     height: 48px;
-    width: 366px;
+    width: 459px;
 }
 .search-box {
-    width: 268px;
+    width: 262px;
     margin-left: 47px;
-    margin-right: 12px;
     border: solid 1px #616475;
+    border-radius: 0;
     background-color: #1e213a;
     color: #616475;
     text-indent: 49px;
+}
+
+.search-box:focus {
+    outline: none;
+    border: solid 1px #e7e7eb;
 }
 
 .search {
@@ -56,5 +61,11 @@ form {
     border: solid 1px #3c47e9;
     background-color: #3c47e9;
     text-align: center;
+    font-size: 16px;
+    margin-left: 12px;
+}
+
+.submit-button:hover {
+    cursor: pointer;
 }
 </style>
