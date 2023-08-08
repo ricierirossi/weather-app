@@ -56,7 +56,6 @@ export default {
     },
     beforeUpdate() {
         this.formatDate(this.time)
-        console.log(this.time)
         this.icon = '../src/assets/svg/' + this.icons + '.svg'
     },
     mounted() {
