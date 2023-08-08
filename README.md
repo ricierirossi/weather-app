@@ -6,7 +6,11 @@ This project is a web application that brings weather conditions through fetch A
 
 ## Features
 
-Today's and next five days weather, wind speed and others using <a href='https://open-meteo.com/en/docs'>Weather Forecast API</a> and <a href='https://apidocs.geoapify.com/'>Reverse Geocode API</a>.
+-  Today's and next five days weather
+-  Wind speed
+-  UV Index
+-  Sunrise and sunset time
+-  °C and °F degree
 
 ## Technologies
 
@@ -15,3 +19,9 @@ Today's and next five days weather, wind speed and others using <a href='https:/
 -   JavaScript
 -   Vue.js
 
+## Icons
+Free to use animated SVG weather icons. Handcrafted by [Bas Milius](https://bas.dev).
+
+## APIs
+ <a href='https://open-meteo.com/en/docs'>Weather Forecast API</a> <br/>
+ <a href='https://apidocs.geoapify.com/'>Reverse Geocode API</a>
