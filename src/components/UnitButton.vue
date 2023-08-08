@@ -37,7 +37,8 @@ export default {
     color: #e7e7eb;
 }
 
-.celsius:hover {
+.selected-unit:hover,
+.unselected-unit:hover {
     cursor: pointer;
 }
 </style>
