@@ -1,8 +1,17 @@
 <template>
     <div class="forecast">
-        <div class="degrees">
-            <CelsiusButton class="celsius" @click="changeUnitToC" />
-            <FahrenheitButton @click="changeUnitToF" />
+        <div class="unit">
+            <UnitButton
+                unit="°C"
+                :class="selected ? 'selected-unit' : 'unselected-unit'"
+                class="buttons"
+                @click="changeUnitToC"
+            />
+            <UnitButton
+                unit="°F"
+                :class="!selected ? 'selected-unit' : 'unselected-unit'"
+                @click="changeUnitToF"
+            />
         </div>
         <div class="days-area">
             <DayCard
@@ -52,8 +61,7 @@
 </template>
 
 <script>
-import CelsiusButton from './CelsiusButton.vue'
-import FahrenheitButton from './FahrenheitButton.vue'
+import UnitButton from './UnitButton.vue'
 import DayCard from './DayCard.vue'
 import WindStatus from './WindStatus.vue'
 import UVIndex from './UVIndex.vue'
@@ -76,8 +84,7 @@ export default {
     ],
 
     components: {
-        CelsiusButton,
-        FahrenheitButton,
+        UnitButton,
         DayCard,
         WindStatus,
         UVIndex,
@@ -87,15 +94,19 @@ export default {
     },
     data: function () {
         return {
-            day: []
+            day: [],
+            selected: true
         }
     },
     methods: {
-        changeUnitToF() {
-            this.$emit('change-unit-to-f')
-        },
         changeUnitToC() {
             this.$emit('change-unit-to-c')
+            this.selected = !this.selected
+        },
+
+        changeUnitToF() {
+            this.$emit('change-unit-to-f')
+            this.selected = !this.selected
         }
     },
     beforeUpdate() {
@@ -112,15 +123,16 @@ export default {
 .forecast {
     background-color: #100e1d;
     box-sizing: border-box;
-    padding: 40px 120px 100px 150px;
+    padding: 40px 120px 100px 154px;
 }
 
-.degrees {
+.unit {
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 66px;
 }
 
-.celsius {
+.buttons {
     margin-right: 15px;
 }
 
