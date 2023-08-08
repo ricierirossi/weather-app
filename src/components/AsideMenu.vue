@@ -88,6 +88,10 @@ export default {
     color: #e7e7eb;
 }
 
+.close:hover {
+    cursor: pointer;
+}
+
 .cities {
     width: 367px;
     margin-left: 48px;
@@ -100,6 +104,8 @@ export default {
     margin-bottom: 72px;
     padding-left: 12px;
     height: 64px;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .city:hover {
@@ -111,5 +117,6 @@ export default {
     position: absolute;
     top: 215x;
     left: 390px;
+    color: #616475;
 }
 </style>
