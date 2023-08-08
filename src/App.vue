@@ -37,6 +37,7 @@
             :sunrise="dailyWeather.sunrise"
             :sunset="dailyWeather.sunset"
             :temperatureUnit="temperatureUnit"
+            :nextDaysIcons="nextDaysIcons"
             @change-unit-to-f="receiveUnitF"
             @change-unit-to-c="receiveUnitC"
         />
@@ -68,10 +69,12 @@ export default {
                 visibility: null
             },
             icons: '',
+            nextDaysIcons: [],
             windDirectionCardinal: '',
             weatherDescription: '',
             dailyWeather: {
                 time: [],
+                weathercode: [],
                 temperature_2m_min: [],
                 temperature_2m_max: [],
                 uv_index_max: [],
@@ -182,6 +185,14 @@ export default {
                 if (code == codeInfo.code) {
                     this.weatherDescription = codeInfo.description
                     this.icons = codeInfo.icon
+                }
+            })
+
+            weatherCodes.forEach((codeInfo) => {
+                for (let i = 1; i < 6; i++) {
+                    if (this.dailyWeather.weathercode[i] == codeInfo.code) {
+                        this.nextDaysIcons[i] = codeInfo.icon
+                    }
                 }
             })
         },
