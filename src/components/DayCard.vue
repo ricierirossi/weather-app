@@ -1,25 +1,25 @@
 <template>
     <div class="day-card">
         <div class="day">{{ day }}</div>
-        <div class="icon">Icon</div>
+        <img :src="icons" width="100" height="100" />
         <div class="temperatures">
-            <div class="max-temperature">
+            <span class="max-temperature">
                 {{ minTemperature }}
                 <span v-if="unit == 'celsius'">°C</span>
                 <span v-else>°F</span>
-            </div>
-            <div class="min-temperature">
+            </span>
+            <span class="min-temperature">
                 {{ maxTemperature }}
                 <span v-if="unit == 'celsius'">°C</span>
                 <span v-else>°F</span>
-            </div>
+            </span>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['day', 'minTemperature', 'maxTemperature', 'temperatureUnit'],
+    props: ['day', 'minTemperature', 'maxTemperature', 'temperatureUnit', 'icon'],
     data: function () {
         return {
             unit: this.temperatureUnit
@@ -31,12 +31,18 @@ export default {
                 this.unit = newUnit
             }
         }
+    },
+    beforeUpdate() {
+        this.icons = '../src/assets/svg/' + this.icon + '.svg'
     }
 }
 </script>
 
 <style scoped>
 .day-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #1e213a;
     width: 125px;
     height: 177px;
@@ -44,23 +50,15 @@ export default {
 
 .day {
     margin-top: 18px;
-    margin-bottom: 10px;
     text-align: center;
-}
-
-.icon {
-    margin-left: 32px;
-    width: 57px;
-    height: 62px;
 }
 
 .temperatures {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     font-size: 16px;
     font-weight: 500;
 }
-
 .max-temperature {
     color: #e7e7eb;
 }
