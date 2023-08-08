@@ -19,30 +19,35 @@
                 :minTemperature="minTemperature[1]"
                 :maxTemperature="maxTemperature[1]"
                 :temperatureUnit="temperatureUnit"
+                :icon="nextDaysIcons[1]"
             />
             <DayCard
                 :day="day[2]"
                 :minTemperature="minTemperature[2]"
                 :maxTemperature="maxTemperature[2]"
                 :temperatureUnit="temperatureUnit"
+                :icon="nextDaysIcons[2]"
             />
             <DayCard
                 :day="day[3]"
                 :minTemperature="minTemperature[3]"
                 :maxTemperature="maxTemperature[3]"
                 :temperatureUnit="temperatureUnit"
+                :icon="nextDaysIcons[3]"
             />
             <DayCard
                 :day="day[4]"
                 :minTemperature="minTemperature[4]"
                 :maxTemperature="maxTemperature[4]"
                 :temperatureUnit="temperatureUnit"
+                :icon="nextDaysIcons[4]"
             />
             <DayCard
                 :day="day[5]"
                 :minTemperature="minTemperature[5]"
                 :maxTemperature="maxTemperature[5]"
                 :temperatureUnit="temperatureUnit"
+                :icon="nextDaysIcons[5]"
             />
         </div>
         <div class="highlight-area">
@@ -80,7 +85,8 @@ export default {
         'uVIndex',
         'sunrise',
         'sunset',
-        'temperatureUnit'
+        'temperatureUnit',
+        'nextDaysIcons'
     ],
 
     components: {
