@@ -61,7 +61,7 @@
                 <SunSet :sunset="sunset[0]" />
             </div>
         </div>
-        <PageFooter />
+        <PageFooter class="footer" />
     </div>
 </template>
 
@@ -153,9 +153,18 @@ export default {
     margin-bottom: 32px;
 }
 
+.highlight-title > span {
+    font-size: 24px;
+    font-family: 700;
+}
+
 .highlights {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 48px;
+}
+
+.footer {
+    margin-top: 112px;
 }
 </style>

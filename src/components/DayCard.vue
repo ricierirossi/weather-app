@@ -4,14 +4,10 @@
         <img :src="icons" width="100" height="100" />
         <div class="temperatures">
             <span class="max-temperature">
-                {{ minTemperature }}
-                <span v-if="unit == 'celsius'">°C</span>
-                <span v-else>°F</span>
+                {{ minTemperature }}<span v-if="unit == 'celsius'">°C</span><span v-else>°F</span>
             </span>
             <span class="min-temperature">
-                {{ maxTemperature }}
-                <span v-if="unit == 'celsius'">°C</span>
-                <span v-else>°F</span>
+                {{ maxTemperature }}<span v-if="unit == 'celsius'">°C</span><span v-else>°F</span>
             </span>
         </div>
     </div>
@@ -22,7 +18,8 @@ export default {
     props: ['day', 'minTemperature', 'maxTemperature', 'temperatureUnit', 'icon'],
     data: function () {
         return {
-            unit: this.temperatureUnit
+            unit: this.temperatureUnit,
+            icons: ''
         }
     },
     watch: {
@@ -55,7 +52,8 @@ export default {
 
 .temperatures {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    width: 100%;
     font-size: 16px;
     font-weight: 500;
 }
