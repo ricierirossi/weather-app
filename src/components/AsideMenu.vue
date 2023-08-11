@@ -76,7 +76,7 @@ export default {
 <style scoped>
 .menu {
     background-color: #1e213a;
-    width: 459px;
+    height: 672px;
 }
 
 .close {
@@ -115,8 +115,28 @@ export default {
 
 .chevron-right {
     position: absolute;
-    top: 215x;
+    top: 215px;
     left: 390px;
     color: #616475;
+}
+
+@media (max-width: 375px) {
+    .menu {
+        width: 375px;
+    }
+
+    .close {
+        margin-left: 339px;
+    }
+
+    .cities {
+        width: 351px;
+        margin-left: 12px;
+        margin-top: 38px;
+    }
+
+    .chevron-right {
+        left: 334px;
+    }
 }
 </style>

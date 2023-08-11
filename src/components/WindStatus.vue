@@ -45,4 +45,10 @@ export default {
     font-size: 14px;
     font-weight: 500;
 }
+
+@media (max-width: 375px) {
+    .highlight-card {
+        width: 328px;
+    }
+}
 </style>

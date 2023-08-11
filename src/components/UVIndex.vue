@@ -29,4 +29,10 @@ export default {
 .title {
     margin-top: 22px;
 }
+
+@media (max-width: 375px) {
+    .highlight-card {
+        width: 328px;
+    }
+}
 </style>

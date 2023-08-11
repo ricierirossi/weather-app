@@ -135,6 +135,7 @@ export default {
 .unit {
     display: flex;
     justify-content: flex-end;
+    margin-top: 40px;
     margin-bottom: 66px;
 }
 
@@ -151,11 +152,8 @@ export default {
 .highlight-title {
     margin-top: 72px;
     margin-bottom: 32px;
-}
-
-.highlight-title > span {
     font-size: 24px;
-    font-family: 700;
+    font-weight: 700;
 }
 
 .highlights {
@@ -166,5 +164,48 @@ export default {
 
 .footer {
     margin-top: 112px;
+}
+
+@media (max-width: 375px) {
+    .forecast {
+        padding: 0;
+    }
+
+    .unit {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .days-area {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 20px 55px 0px 54px;
+        margin-top: 30px;
+    }
+
+    .highlight-area {
+        padding: 0 24px 0 23px;
+    }
+
+    .highlight-title {
+        margin-top: 19px;
+        margin-bottom: 32px;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .highlights {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .footer {
+        margin-top: 96px;
+        margin-bottom: 24px;
+        font-size: 14px;
+    }
 }
 </style>

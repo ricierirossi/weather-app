@@ -26,7 +26,6 @@ export default {
 <style scoped>
 form {
     display: flex;
-    /* justify-content: center; */
     margin-top: 38px;
     height: 48px;
     width: 459px;
@@ -67,5 +66,20 @@ form {
 
 .submit-button:hover {
     cursor: pointer;
+}
+
+@media (max-width: 375px) {
+    form {
+        margin-top: 38px;
+        width: 375px;
+    }
+    .search-box {
+        width: 246px;
+        margin-left: 13px;
+    }
+
+    .search {
+        left: 28px;
+    }
 }
 </style>

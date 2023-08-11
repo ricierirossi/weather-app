@@ -50,4 +50,10 @@ export default {
     align-items: center;
     font-size: 24px;
 }
+
+@media (max-width: 375px) {
+    .highlight-card {
+        width: 328px;
+    }
+}
 </style>

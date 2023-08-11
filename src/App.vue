@@ -267,4 +267,16 @@ export default {
 .forecast-info {
     width: 981px;
 }
+
+@media (max-width: 375px) {
+    .home {
+        flex-direction: column;
+        width: 375px;
+    }
+    .aside-menu,
+    .aside-info,
+    .forecast-info {
+        width: 375px;
+    }
+}
 </style>

@@ -115,7 +115,6 @@ export default {
     top: 63px;
     width: 250px;
     height: 250px;
-    opacity: 100%;
 }
 
 .temperature-info {
@@ -170,5 +169,49 @@ export default {
     font-weight: 600px;
     font-size: 18px;
     color: #88869d;
+}
+
+@media (max-width: 375px) {
+    .menu {
+        width: 375px;
+    }
+
+    .buttons {
+        display: flex;
+        margin: 29px 12px 0 11px;
+    }
+
+    .local-button {
+        margin-left: 151px;
+    }
+    .wallpaper {
+        position: relative;
+    }
+
+    .clouds {
+        background-size: cover;
+        width: 375px;
+        height: 326px;
+    }
+
+    .icon {
+        left: 63px;
+    }
+
+    .temperature-info {
+        margin-top: 0px;
+    }
+
+    .weather {
+        margin-top: 23px;
+    }
+
+    .today-date {
+        margin-top: 48px;
+    }
+
+    .place {
+        margin-bottom: 103px;
+    }
 }
 </style>
