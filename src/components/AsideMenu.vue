@@ -76,7 +76,7 @@ export default {
 <style scoped>
 .menu {
     background-color: #1e213a;
-    height: 672px;
+    /* height: 672px; */
 }
 
 .close {
