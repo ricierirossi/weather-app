@@ -8,6 +8,21 @@ export default {}
 
 <style scoped>
 .search {
+    background-color: var(--dark-grey);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 161px;
+}
+
+.search:hover {
+    cursor: pointer;
+}
+</style>
+
+/*
+<!-- <style scoped>
+.search {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,4 +36,5 @@ export default {}
 .search:hover {
     cursor: pointer;
 }
-</style>
+</style> -->
+*/

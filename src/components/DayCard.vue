@@ -35,7 +35,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<!-- <style scoped>
 .day-card {
     display: flex;
     flex-direction: column;
@@ -70,4 +70,4 @@ export default {
         margin-bottom: 32px;
     }
 }
-</style>
+</style> -->

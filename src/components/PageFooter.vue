@@ -10,7 +10,8 @@
 export default {}
 </script>
 
-<style scoped>
+/*
+<!-- <style scoped>
 footer {
     margin-top: 20px;
     bottom: 0;
@@ -19,4 +20,5 @@ footer {
 .heart {
     color: red;
 }
-</style>
+</style> -->
+*/

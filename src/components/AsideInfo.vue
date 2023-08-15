@@ -77,6 +77,94 @@ export default {
 </script>
 
 <style scoped>
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 18px 12px 0 11px;
+    box-sizing: border-box;
+}
+
+.today {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wallpaper {
+    position: relative;
+}
+
+.clouds {
+    background-image: url('../assets/images/Cloud-background.png');
+    background-position: center;
+    background-size: cover;
+    width: 576px;
+    height: 326px;
+    opacity: 10%;
+}
+
+.icon {
+    position: absolute;
+    left: calc(50% - 125px);
+    top: calc(50% - 125px);
+    width: 250px;
+    height: 250px;
+}
+
+.temperature {
+    font-size: 144px;
+    font-weight: 500;
+}
+
+.degree {
+    font-size: 48px;
+    font-weight: 100;
+    color: var(--light-grey);
+}
+
+.weather {
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--light-grey);
+    margin: 23px 0 48px 0;
+}
+
+.today-date {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--light-grey);
+    margin-bottom: 32px;
+}
+
+.city {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--light-grey);
+    margin-bottom: 105px;
+}
+
+@media (min-width: 576px) {
+    .buttons {
+        padding: 42px 46px 0 46px;
+    }
+}
+
+@media (min-width: 768px) {
+    .clouds {
+        display: none;
+    }
+
+    .temperature {
+        font-size: 144px;
+        font-weight: 500;
+    }
+}
+</style>
+
+<!-- <style scoped>
 .menu {
     background-color: #1e213a;
     width: 459px;
@@ -214,4 +302,4 @@ export default {
         margin-bottom: 103px;
     }
 }
-</style>
+</style> -->

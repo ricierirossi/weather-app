@@ -10,7 +10,8 @@ export default {
 }
 </script>
 
-<style scoped>
+/*
+<!-- <style scoped>
 .selected-unit {
     display: flex;
     justify-content: center;
@@ -41,4 +42,5 @@ export default {
 .unselected-unit:hover {
     cursor: pointer;
 }
-</style>
+</style> -->
+*/

@@ -126,6 +126,18 @@ export default {
 </script>
 
 <style scoped>
+.unit {
+    display: flex;
+}
+
+.days-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+</style>
+
+<!-- <style scoped>
 .forecast {
     background-color: #100e1d;
     box-sizing: border-box;
@@ -208,4 +220,10 @@ export default {
         font-size: 14px;
     }
 }
-</style>
+
+/* @media (min-width: 376px) and (max-width: 1366px) {
+    .forecast {
+        padding: 10px 50px 100px 50px;
+    }
+} */
+</style> -->

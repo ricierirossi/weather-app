@@ -1,6 +1,6 @@
 <template>
     <aside class="menu">
-        <span class="material-icons close" @click="openCloseMenu"> close </span>
+        <div class="material-icons close" @click="openCloseMenu">close</div>
         <div class="buttons">
             <SearchLocation :searchedLocation="searchedLocation" @submit-city="onSubmittedCity" />
         </div>
@@ -72,11 +72,26 @@ export default {
     }
 }
 </script>
-
 <style scoped>
 .menu {
+    display: flex;
+    flex-direction: column;
+}
+.close {
+    align-self: flex-end;
+    margin: 24px;
+    height: 18px;
+    width: 18px;
+}
+
+.close:hover {
+    cursor: pointer;
+}
+</style>
+
+<!-- <style scoped>
+.menu {
     background-color: #1e213a;
-    /* height: 672px; */
 }
 
 .close {
@@ -130,7 +145,7 @@ export default {
     }
 
     .cities {
-        width: 351px;
+        width: 300px;
         margin-left: 12px;
         margin-top: 38px;
     }
@@ -139,4 +154,4 @@ export default {
         left: 334px;
     }
 }
-</style>
+</style> -->

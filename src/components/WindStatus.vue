@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<!-- <style scoped>
 .highlight-card {
     display: flex;
     flex-direction: column;
@@ -51,4 +51,4 @@ export default {
         width: 328px;
     }
 }
-</style>
+</style> -->

@@ -252,6 +252,49 @@ export default {
 </script>
 
 <style scoped>
+.aside-info,
+.aside-menu {
+    background-color: var(--blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.forecast-info {
+    background-color: var(--dark-blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .home {
+        display: flex;
+    }
+
+    .aside-info,
+    .aside-menu {
+        width: 45%;
+    }
+
+    .forecast-info {
+        flex: 55%;
+    }
+}
+
+@media (min-width: 992px) {
+    .home {
+        display: flex;
+    }
+
+    .aside-info,
+    .aside-menu {
+        width: 459px;
+    }
+}
+</style>
+
+<!-- <style scoped>
 .home {
     display: flex;
     color: #e7e7eb;
@@ -279,4 +322,4 @@ export default {
         width: 375px;
     }
 }
-</style>
+</style> -->
