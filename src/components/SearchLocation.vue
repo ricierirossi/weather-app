@@ -88,10 +88,6 @@ form {
     .search-box {
         width: 100%;
     }
-
-    .submit-button {
-        min-width: 86px;
-    }
 }
 
 @media (min-width: 992px) {

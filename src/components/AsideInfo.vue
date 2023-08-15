@@ -153,8 +153,13 @@ export default {
 }
 
 @media (min-width: 768px) {
+    .today,
+    .wallpaper {
+        width: 100%;
+    }
+
     .clouds {
-        display: none;
+        width: 100%;
     }
 
     .temperature {

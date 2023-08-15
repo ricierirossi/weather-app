@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="button">
         <span>{{ unit }}</span>
     </div>
 </template>
@@ -10,7 +10,27 @@ export default {
 }
 </script>
 
-/*
+<style scoped>
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: 700;
+}
+.selected-unit {
+    background-color: var(--off-white);
+    color: var(--bluer);
+}
+.unselected-unit {
+    background-color: var(--overcast-grey);
+    color: var(--off-white);
+}
+</style>
+
 <!-- <style scoped>
 .selected-unit {
     display: flex;

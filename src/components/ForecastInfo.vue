@@ -128,12 +128,31 @@ export default {
 <style scoped>
 .unit {
     display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 40px 0;
+}
+
+.buttons {
+    margin-right: 15px;
 }
 
 .days-area {
     display: flex;
+    gap: 32px 26px;
+    justify-content: space-around;
     flex-wrap: wrap;
-    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .forecast {
+        display: flex;
+        flex-direction: column;
+        padding: 0 125px 0 154px;
+    }
+    .unit {
+        justify-content: flex-end;
+    }
 }
 </style>
 
