@@ -15,6 +15,38 @@ export default {
 }
 </script>
 
+<style scoped>
+.highlight-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--blue);
+}
+
+.title {
+    margin-top: 22px;
+}
+
+.value-unit {
+    margin-top: 6px;
+}
+.value {
+    font-size: 64px;
+    font-weight: 700;
+}
+
+.unit {
+    font-size: 36px;
+    font-weight: 500;
+}
+.direction {
+    margin-top: 32px;
+    margin-bottom: 34px;
+    font-size: 14px;
+    font-weight: 500;
+}
+</style>
+
 <!-- <style scoped>
 .highlight-card {
     display: flex;

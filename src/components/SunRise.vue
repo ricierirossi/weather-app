@@ -33,6 +33,26 @@ export default {
 }
 </script>
 
+<style scoped>
+.highlight-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--blue);
+}
+
+.title {
+    margin-top: 22px;
+}
+
+.sunrise {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    padding-right: 10px;
+}
+</style>
+
 <!-- <style scoped>
 .highlight-card {
     display: flex;

@@ -93,13 +93,14 @@ export default {
 
 .wallpaper {
     position: relative;
+    width: 100vw;
 }
 
 .clouds {
     background-image: url('../assets/images/Cloud-background.png');
     background-position: center;
     background-size: cover;
-    width: 576px;
+    width: 100%;
     height: 326px;
     opacity: 10%;
 }
@@ -149,6 +150,14 @@ export default {
 @media (min-width: 576px) {
     .buttons {
         padding: 42px 46px 0 46px;
+    }
+
+    .wallpaper {
+        width: 100vw;
+    }
+
+    .clouds {
+        width: 100%;
     }
 }
 

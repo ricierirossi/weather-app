@@ -55,10 +55,14 @@
                 <span>Today's Highlights</span>
             </div>
             <div class="highlights">
-                <WindStatus :wind="wind" :windDirectionCardinal="windDirectionCardinal" />
-                <UVIndex :uVIndex="uVIndex[0]" />
-                <SunRise :sunrise="sunrise[0]" />
-                <SunSet :sunset="sunset[0]" />
+                <WindStatus
+                    class="highlights-child"
+                    :wind="wind"
+                    :windDirectionCardinal="windDirectionCardinal"
+                />
+                <UVIndex class="highlights-child" :uVIndex="uVIndex[0]" />
+                <SunRise class="highlights-child" :sunrise="sunrise[0]" />
+                <SunSet class="highlights-child" :sunset="sunset[0]" />
             </div>
         </div>
         <PageFooter class="footer" />
@@ -139,9 +143,37 @@ export default {
 
 .days-area {
     display: flex;
+    flex-direction: column;
     gap: 32px 26px;
     justify-content: space-around;
     flex-wrap: wrap;
+}
+
+.highlight-title {
+    margin: 32px 0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.highlights-child {
+    margin-bottom: 32px;
+}
+
+.footer {
+    margin: 112px 0 24px 0;
+}
+
+@media (min-width: 459px) {
+    .days-area {
+        flex-direction: row;
+        gap: 32px 26px;
+    }
+
+    .highlights {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+    }
 }
 
 @media (min-width: 768px) {
@@ -152,6 +184,15 @@ export default {
     }
     .unit {
         justify-content: flex-end;
+    }
+
+    .highlight-title {
+        margin-left: -100px;
+    }
+    .highlights {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
     }
 }
 </style>
