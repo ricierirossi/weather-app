@@ -50,15 +50,17 @@
                 :icon="nextDaysIcons[5]"
             />
         </div>
+        <span class="highlight-title">Today's Highlights</span>
         <div class="highlight-area">
-            <div class="highlight-title">
-                <span>Today's Highlights</span>
-            </div>
             <div class="highlights">
-                <WindStatus :wind="wind" :windDirectionCardinal="windDirectionCardinal" />
-                <UVIndex :uVIndex="uVIndex[0]" />
-                <SunRise :sunrise="sunrise[0]" />
-                <SunSet :sunset="sunset[0]" />
+                <WindStatus
+                    class="highlights-child"
+                    :wind="wind"
+                    :windDirectionCardinal="windDirectionCardinal"
+                />
+                <UVIndex class="highlights-child" :uVIndex="uVIndex[0]" />
+                <SunRise class="highlights-child" :sunrise="sunrise[0]" />
+                <SunSet class="highlights-child" :sunset="sunset[0]" />
             </div>
         </div>
         <PageFooter class="footer" />
@@ -101,18 +103,25 @@ export default {
     data: function () {
         return {
             day: [],
-            selected: true
+            selected: true,
+            degree: '°C'
         }
     },
     methods: {
         changeUnitToC() {
-            this.$emit('change-unit-to-c')
-            this.selected = !this.selected
+            if (this.degree != '°C') {
+                this.$emit('change-unit-to-c')
+                this.selected = !this.selected
+                this.degree = '°C'
+            }
         },
 
         changeUnitToF() {
-            this.$emit('change-unit-to-f')
-            this.selected = !this.selected
+            if (this.degree != '°F') {
+                this.$emit('change-unit-to-f')
+                this.selected = !this.selected
+                this.degree = '°F'
+            }
         }
     },
     beforeUpdate() {
@@ -126,17 +135,11 @@ export default {
 </script>
 
 <style scoped>
-.forecast {
-    background-color: #100e1d;
-    box-sizing: border-box;
-    padding: 40px 120px 100px 154px;
-}
-
 .unit {
     display: flex;
-    justify-content: flex-end;
-    margin-top: 40px;
-    margin-bottom: 66px;
+    justify-content: center;
+    width: 100%;
+    margin: 40px 0;
 }
 
 .buttons {
@@ -145,67 +148,70 @@ export default {
 
 .days-area {
     display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
+    flex-direction: column;
+    gap: 32px 26px;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .highlight-title {
-    margin-top: 72px;
-    margin-bottom: 32px;
+    margin: 32px 0;
     font-size: 24px;
     font-weight: 700;
 }
 
-.highlights {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
+.highlights-child {
+    margin-bottom: 32px;
 }
 
 .footer {
-    margin-top: 112px;
+    margin: 112px 0 24px 0;
 }
 
-@media (max-width: 375px) {
-    .forecast {
-        padding: 0;
-    }
-
-    .unit {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
-
+@media (min-width: 459px) {
     .days-area {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        padding: 20px 55px 0px 54px;
-        margin-top: 30px;
-    }
-
-    .highlight-area {
-        padding: 0 24px 0 23px;
-    }
-
-    .highlight-title {
-        margin-top: 19px;
-        margin-bottom: 32px;
-        font-size: 24px;
-        font-weight: 700;
+        flex-direction: row;
+        gap: 32px 26px;
     }
 
     .highlights {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 32px;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+    }
+}
+
+@media (min-width: 768px) {
+    .forecast {
+        display: flex;
+        flex-direction: column;
     }
 
-    .footer {
-        margin-top: 96px;
-        margin-bottom: 24px;
-        font-size: 14px;
+    .forecast > div {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .unit {
+        align-self: flex-end;
+        max-width: 100px;
+    }
+
+    .highlight-title {
+        align-self: flex-start;
+        max-width: 706px;
+        padding-left: 20px;
+        margin-right: 20px;
+    }
+    .highlights {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .unit {
+        max-width: 100px;
     }
 }
 </style>

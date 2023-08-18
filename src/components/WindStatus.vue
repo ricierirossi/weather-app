@@ -20,7 +20,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #1e213a;
+    background-color: var(--blue);
 }
 
 .title {
@@ -44,11 +44,5 @@ export default {
     margin-bottom: 34px;
     font-size: 14px;
     font-weight: 500;
-}
-
-@media (max-width: 375px) {
-    .highlight-card {
-        width: 328px;
-    }
 }
 </style>

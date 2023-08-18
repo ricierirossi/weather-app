@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    props: ['unit', 'selected']
+    props: ['unit']
 }
 </script>
 

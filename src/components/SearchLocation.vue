@@ -1,7 +1,9 @@
 <template>
     <form @submit.prevent="submitCity">
-        <span class="material-icons search"> search </span>
-        <input class="search-box" placeholder="search city" type="text" v-model="city" />
+        <div class="search-container">
+            <span class="material-icons search"> search </span>
+            <input class="search-box" placeholder="search city" type="text" v-model="city" />
+        </div>
         <input class="submit-button" type="submit" value="Search" />
     </form>
 </template>
@@ -26,60 +28,72 @@ export default {
 <style scoped>
 form {
     display: flex;
-    margin-top: 38px;
-    height: 48px;
-    width: 459px;
+    justify-content: space-between;
+    margin: auto 13px;
 }
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 .search-box {
-    width: 262px;
-    margin-left: 47px;
-    border: solid 1px #616475;
+    width: 252px;
+    height: 48px;
+    box-sizing: border-box;
+    border: solid 1px var(--off-white);
     border-radius: 0;
-    background-color: #1e213a;
-    color: #616475;
+    background-color: var(--blue);
+    font-size: 16px;
+    font-weight: 500;
     text-indent: 49px;
+    color: var(--darker-grey);
+    margin-right: 12px;
 }
 
 .search-box:focus {
     outline: none;
-    border: solid 1px #e7e7eb;
+    border: solid 1px var(--off-white);
 }
 
 .search {
     position: absolute;
-    height: 17px;
     width: 17px;
-    left: 62px;
-    top: 97px;
-    color: #616475;
+    left: 17px;
+    color: var(--darker-grey);
 }
 
 .submit-button {
     all: unset;
+    box-sizing: border-box;
+    border: solid 1px var(--sky-blue);
+    background-color: var(--sky-blue);
+    height: 48px;
     width: 86px;
-    border: solid 1px #3c47e9;
-    background-color: #3c47e9;
     text-align: center;
     font-size: 16px;
-    margin-left: 12px;
+    font-weight: 600;
 }
 
 .submit-button:hover {
     cursor: pointer;
 }
 
-@media (max-width: 375px) {
+@media (min-width: 768px) {
     form {
-        margin-top: 38px;
-        width: 375px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+}
+
+@media (min-width: 992px) {
+    form {
+        flex-direction: row;
     }
     .search-box {
-        width: 246px;
-        margin-left: 13px;
-    }
-
-    .search {
-        left: 28px;
+        width: 268px;
     }
 }
 </style>

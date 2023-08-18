@@ -1,45 +1,50 @@
 <template>
     <aside class="menu">
-        <span class="material-icons close" @click="openCloseMenu"> close </span>
+        <div class="material-icons close" @click="openCloseMenu">close</div>
         <div class="buttons">
-            <SearchLocation :searchedLocation="searchedLocation" @submit-city="onSubmittedCity" />
-        </div>
-        <div class="cities">
-            <div
-                class="city"
-                :lat="-23.55052"
-                :long="-46.633309"
-                @click="chooseCity"
-                @mouseenter="hover[0] = true"
-                @mouseleave="hover[0] = false"
-            >
-                São Paulo
-                <span class="material-icons chevron-right" v-if="hover[0]"> chevron_right </span>
-            </div>
-            <div
-                class="city"
-                :lat="51.507351"
-                :long="-0.127758"
-                @click="chooseCity"
-                @mouseenter="hover[1] = true"
-                @mouseleave="hover[1] = false"
-            >
-                London<span class="material-icons chevron-right" v-if="hover[1]">
-                    chevron_right
-                </span>
-            </div>
-
-            <div
-                class="city"
-                :lat="55.755826"
-                :long="37.6173"
-                @click="chooseCity"
-                @mouseenter="hover[2] = true"
-                @mouseleave="hover[2] = false"
-            >
-                Moscow<span class="material-icons chevron-right" v-if="hover[2]">
-                    chevron_right
-                </span>
+            <SearchLocation
+                class="search-location"
+                :searchedLocation="searchedLocation"
+                @submit-city="onSubmittedCity"
+            />
+            <div class="cities">
+                <div
+                    class="city"
+                    :lat="-23.55052"
+                    :long="-46.633309"
+                    @click="chooseCity"
+                    @mouseenter="hover[0] = true"
+                    @mouseleave="hover[0] = false"
+                >
+                    São Paulo
+                    <span class="material-icons chevron-right" v-if="hover[0]">
+                        chevron_right
+                    </span>
+                </div>
+                <div
+                    class="city"
+                    :lat="51.507351"
+                    :long="-0.127758"
+                    @click="chooseCity"
+                    @mouseenter="hover[1] = true"
+                    @mouseleave="hover[1] = false"
+                >
+                    London<span class="material-icons chevron-right" v-if="hover[1]">
+                        chevron_right
+                    </span>
+                </div>
+                <div
+                    class="city"
+                    :lat="55.755826"
+                    :long="37.6173"
+                    @click="chooseCity"
+                    @mouseenter="hover[2] = true"
+                    @mouseleave="hover[2] = false"
+                >
+                    Moscow<span class="material-icons chevron-right" v-if="hover[2]">
+                        chevron_right
+                    </span>
+                </div>
             </div>
         </div>
     </aside>
@@ -72,67 +77,65 @@ export default {
     }
 }
 </script>
-
 <style scoped>
 .menu {
-    background-color: #1e213a;
-    /* height: 672px; */
+    display: flex;
+    flex-direction: column;
 }
 
 .close {
-    margin-top: 20px;
-    margin-left: 388px;
-    text-align: right;
-    height: 18px;
-    width: 18px;
-    color: #e7e7eb;
+    align-self: flex-end;
+    margin: 12px 12px 24px auto;
 }
 
 .close:hover {
     cursor: pointer;
 }
 
+.search-location {
+    box-sizing: content-box;
+}
+
 .cities {
-    width: 367px;
-    margin-left: 48px;
-    margin-top: 58px;
+    margin: 0 0 0 12px;
+    display: flex;
+    flex-direction: column;
 }
 
 .city {
     display: flex;
     align-items: center;
-    margin-bottom: 72px;
-    padding-left: 12px;
+    width: 339px;
     height: 64px;
+    padding-left: 12px;
     font-size: 16px;
     font-weight: 500;
 }
-
 .city:hover {
-    border: solid 1px #616475;
+    border: solid 1px var(--darker-grey);
     cursor: pointer;
 }
 
 .chevron-right {
     position: absolute;
-    top: 215px;
-    left: 390px;
-    color: #616475;
+    left: 334px;
+    color: var(--darker-grey);
 }
 
-@media (max-width: 375px) {
-    .menu {
-        width: 375px;
+@media (min-width: 768px) {
+    .city {
+        margin-top: 20px;
+        width: 240px;
     }
 
-    .close {
-        margin-left: 339px;
+    .chevron-right {
+        left: 230px;
     }
+}
 
-    .cities {
-        width: 351px;
-        margin-left: 12px;
-        margin-top: 38px;
+@media (min-width: 992px) {
+    .city {
+        width: 93%;
     }
 
     .chevron-right {

@@ -38,7 +38,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #1e213a;
+    background-color: var(--blue);
 }
 
 .title {
@@ -48,12 +48,7 @@ export default {
 .sunrise {
     display: flex;
     align-items: center;
-    font-size: 24px;
-}
-
-@media (max-width: 375px) {
-    .highlight-card {
-        width: 328px;
-    }
+    font-size: 20px;
+    padding-right: 10px;
 }
 </style>

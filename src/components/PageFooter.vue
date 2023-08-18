@@ -9,14 +9,3 @@
 <script>
 export default {}
 </script>
-
-<style scoped>
-footer {
-    margin-top: 20px;
-    bottom: 0;
-    text-align: center;
-}
-.heart {
-    color: red;
-}
-</style>
