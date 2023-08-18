@@ -19,4 +19,8 @@ export default {}
     justify-content: center;
     align-items: center;
 }
+
+.local:hover {
+    cursor: pointer;
+}
 </style>
