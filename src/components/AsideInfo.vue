@@ -54,7 +54,7 @@ export default {
             this.$emit('get-coordinates')
         }
     },
-    created() {
+    mounted() {
         this.formatDate(this.time)
         this.formatDate(this.time)
         this.icon = '../src/assets/svg/' + this.icons + '.svg'
