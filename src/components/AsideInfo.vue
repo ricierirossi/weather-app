@@ -77,18 +77,12 @@ export default {
 </script>
 
 <style scoped>
-.menu {
-    background-color: #1e213a;
-    width: 459px;
-}
-
 .buttons {
     display: flex;
-    margin: 42px 0 21px 46px;
-}
-
-.local-button {
-    margin-left: 166px;
+    justify-content: space-between;
+    width: 100%;
+    padding: 18px 12px 0 11px;
+    box-sizing: border-box;
 }
 
 .today {
@@ -99,119 +93,98 @@ export default {
 
 .wallpaper {
     position: relative;
+    width: 100vw;
 }
 
 .clouds {
     background-image: url('../assets/images/Cloud-background.png');
     background-position: center;
-    width: 459px;
-    height: 376px;
+    background-size: cover;
+    width: 100%;
+    height: 326px;
     opacity: 10%;
 }
 
 .icon {
     position: absolute;
-    left: 105px;
-    top: 63px;
+    left: calc(50% - 125px);
+    top: calc(50% - 125px);
     width: 250px;
     height: 250px;
 }
 
-.temperature-info {
-    margin-top: 33px;
-}
-
 .temperature {
-    font-weight: 500;
     font-size: 144px;
-    line-height: 169.06px;
-    color: #e7e7eb;
+    font-weight: 500;
 }
 
 .degree {
-    font-weight: 100;
     font-size: 48px;
-    color: #a09fb1;
+    font-weight: 100;
+    color: var(--light-grey);
 }
 
 .weather {
-    margin-top: 87px;
     font-size: 36px;
     font-weight: 600;
-    color: #88869d;
+    color: var(--light-grey);
+    margin: 23px 0 48px 0;
 }
 
 .today-date {
-    margin-top: 87px;
-    margin-bottom: 31px;
     font-size: 18px;
     font-weight: 500;
-    color: #88869d;
-}
-
-.dot {
-    margin: 0 16px 0 16px;
+    color: var(--light-grey);
+    margin-bottom: 32px;
 }
 
 .city {
     display: flex;
-    justify-content: center;
-}
-
-.place {
-    height: 19px;
-    width: 14px;
-    color: #88869d;
-    margin-right: 15px;
-}
-
-.city-name {
-    font-weight: 600px;
+    align-items: center;
     font-size: 18px;
-    color: #88869d;
+    font-weight: 500;
+    color: var(--light-grey);
+    margin-bottom: 105px;
 }
 
-@media (max-width: 375px) {
-    .menu {
-        width: 375px;
-    }
-
+@media (min-width: 576px) {
     .buttons {
-        display: flex;
-        margin: 29px 12px 0 11px;
+        padding: 42px 46px 0 46px;
     }
 
-    .local-button {
-        margin-left: 151px;
-    }
     .wallpaper {
-        position: relative;
+        width: 100vw;
     }
 
     .clouds {
-        background-size: cover;
-        width: 375px;
-        height: 326px;
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .buttons {
+        padding-left: 0;
+        padding-right: 0;
+        justify-content: space-around;
+    }
+    .today,
+    .wallpaper {
+        width: 100%;
     }
 
-    .icon {
-        left: 63px;
+    .clouds {
+        width: 100%;
     }
 
-    .temperature-info {
-        margin-top: 0px;
+    .temperature {
+        font-size: 80px;
+        font-weight: 500;
     }
+}
 
-    .weather {
-        margin-top: 23px;
-    }
-
-    .today-date {
-        margin-top: 48px;
-    }
-
-    .place {
-        margin-bottom: 103px;
+@media (min-width: 1200px) {
+    .temperature {
+        font-size: 144px;
     }
 }
 </style>

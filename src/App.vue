@@ -38,8 +38,8 @@
             :sunset="dailyWeather.sunset"
             :temperatureUnit="temperatureUnit"
             :nextDaysIcons="nextDaysIcons"
-            @change-unit-to-f="receiveUnitF"
             @change-unit-to-c="receiveUnitC"
+            @change-unit-to-f="receiveUnitF"
         />
     </div>
 </template>
@@ -252,31 +252,44 @@ export default {
 </script>
 
 <style scoped>
-.home {
-    display: flex;
-    color: #e7e7eb;
-    width: 1440px;
-    height: 100vh;
-}
-
 .aside-info,
 .aside-menu {
-    width: 459px;
+    background-color: var(--blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .forecast-info {
-    width: 981px;
+    background-color: var(--dark-blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-@media (max-width: 375px) {
+@media (min-width: 768px) {
     .home {
-        flex-direction: column;
-        width: 375px;
+        display: flex;
     }
-    .aside-menu,
+
     .aside-info,
+    .aside-menu {
+        width: 45%;
+    }
+
     .forecast-info {
-        width: 375px;
+        flex: 55%;
+    }
+}
+
+@media (min-width: 992px) {
+    .home {
+        display: flex;
+    }
+
+    .aside-info,
+    .aside-menu {
+        width: 459px;
     }
 }
 </style>

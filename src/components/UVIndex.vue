@@ -24,15 +24,10 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #1e213a;
-}
-.title {
-    margin-top: 22px;
+    background-color: var(--blue);
 }
 
-@media (max-width: 375px) {
-    .highlight-card {
-        width: 328px;
-    }
+.title {
+    margin-top: 22px;
 }
 </style>

@@ -40,7 +40,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #1e213a;
+    background-color: var(--blue);
     width: 120px;
     height: 177px;
 }
@@ -63,11 +63,5 @@ export default {
 
 .min-temperature {
     color: #a09fb1;
-}
-
-@media (max-width: 375px) {
-    .day-card {
-        margin-bottom: 32px;
-    }
 }
 </style>
