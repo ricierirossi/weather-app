@@ -226,7 +226,7 @@ export default {
             this.visible = !this.visible
         }
     },
-    mounted() {
+    created() {
         this.getLocation()
         this.watchLocation()
     },
