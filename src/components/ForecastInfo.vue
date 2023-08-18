@@ -103,18 +103,25 @@ export default {
     data: function () {
         return {
             day: [],
-            selected: true
+            selected: true,
+            degree: '°C'
         }
     },
     methods: {
         changeUnitToC() {
-            this.$emit('change-unit-to-c')
-            this.selected = !this.selected
+            if (this.degree != '°C') {
+                this.$emit('change-unit-to-c')
+                this.selected = !this.selected
+                this.degree = '°C'
+            }
         },
 
         changeUnitToF() {
-            this.$emit('change-unit-to-f')
-            this.selected = !this.selected
+            if (this.degree != '°F') {
+                this.$emit('change-unit-to-f')
+                this.selected = !this.selected
+                this.degree = '°F'
+            }
         }
     },
     beforeUpdate() {
