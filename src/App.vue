@@ -293,33 +293,3 @@ export default {
     }
 }
 </style>
-
-<!-- <style scoped>
-.home {
-    display: flex;
-    color: #e7e7eb;
-    width: 1440px;
-    height: 100vh;
-}
-
-.aside-info,
-.aside-menu {
-    width: 459px;
-}
-
-.forecast-info {
-    width: 981px;
-}
-
-@media (max-width: 375px) {
-    .home {
-        flex-direction: column;
-        width: 375px;
-    }
-    .aside-menu,
-    .aside-info,
-    .forecast-info {
-        width: 375px;
-    }
-}
-</style> -->
