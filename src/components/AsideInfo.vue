@@ -57,7 +57,7 @@ export default {
     created() {
         this.formatDate(this.time)
         this.formatDate(this.time)
-        this.icon = '~/assets/svg/' + this.icons + '.svg'
+        this.icon = require('~/assets/svg/' + this.icons + '.svg')
     },
     watch: {
         temperatureUnit: {
