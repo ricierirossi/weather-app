@@ -172,8 +172,14 @@ export default {
     }
 
     .temperature {
-        font-size: 144px;
+        font-size: 80px;
         font-weight: 500;
+    }
+}
+
+@media (min-width: 1200px) {
+    .temperature {
+        font-size: 144px;
     }
 }
 </style>

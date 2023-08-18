@@ -2,44 +2,49 @@
     <aside class="menu">
         <div class="material-icons close" @click="openCloseMenu">close</div>
         <div class="buttons">
-            <SearchLocation :searchedLocation="searchedLocation" @submit-city="onSubmittedCity" />
-        </div>
-        <div class="cities">
-            <div
-                class="city"
-                :lat="-23.55052"
-                :long="-46.633309"
-                @click="chooseCity"
-                @mouseenter="hover[0] = true"
-                @mouseleave="hover[0] = false"
-            >
-                São Paulo
-                <span class="material-icons chevron-right" v-if="hover[0]"> chevron_right </span>
-            </div>
-            <div
-                class="city"
-                :lat="51.507351"
-                :long="-0.127758"
-                @click="chooseCity"
-                @mouseenter="hover[1] = true"
-                @mouseleave="hover[1] = false"
-            >
-                London<span class="material-icons chevron-right" v-if="hover[1]">
-                    chevron_right
-                </span>
-            </div>
-
-            <div
-                class="city"
-                :lat="55.755826"
-                :long="37.6173"
-                @click="chooseCity"
-                @mouseenter="hover[2] = true"
-                @mouseleave="hover[2] = false"
-            >
-                Moscow<span class="material-icons chevron-right" v-if="hover[2]">
-                    chevron_right
-                </span>
+            <SearchLocation
+                class="search-location"
+                :searchedLocation="searchedLocation"
+                @submit-city="onSubmittedCity"
+            />
+            <div class="cities">
+                <div
+                    class="city"
+                    :lat="-23.55052"
+                    :long="-46.633309"
+                    @click="chooseCity"
+                    @mouseenter="hover[0] = true"
+                    @mouseleave="hover[0] = false"
+                >
+                    São Paulo
+                    <span class="material-icons chevron-right" v-if="hover[0]">
+                        chevron_right
+                    </span>
+                </div>
+                <div
+                    class="city"
+                    :lat="51.507351"
+                    :long="-0.127758"
+                    @click="chooseCity"
+                    @mouseenter="hover[1] = true"
+                    @mouseleave="hover[1] = false"
+                >
+                    London<span class="material-icons chevron-right" v-if="hover[1]">
+                        chevron_right
+                    </span>
+                </div>
+                <div
+                    class="city"
+                    :lat="55.755826"
+                    :long="37.6173"
+                    @click="chooseCity"
+                    @mouseenter="hover[2] = true"
+                    @mouseleave="hover[2] = false"
+                >
+                    Moscow<span class="material-icons chevron-right" v-if="hover[2]">
+                        chevron_right
+                    </span>
+                </div>
             </div>
         </div>
     </aside>
@@ -72,4 +77,46 @@ export default {
     }
 }
 </script>
-<style scoped></style>
+<style scoped>
+.menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.close {
+    align-self: flex-end;
+    margin: 12px 12px 24px auto;
+}
+
+.search-location {
+    box-sizing: content-box;
+}
+
+.cities {
+    margin: 0 0 0 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.city {
+    display: flex;
+    align-items: center;
+    width: 339px;
+    height: 64px;
+    padding-left: 12px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.city:hover {
+    border: solid 1px var(--darker-grey);
+}
+
+.chevron-right {
+    position: absolute;
+    left: 334px;
+    color: var(--darker-grey);
+}
+
+@media (min-width: 768px) {
+}
+</style>

@@ -28,8 +28,8 @@ export default {
 <style scoped>
 form {
     display: flex;
-    justify-content: space-around;
-    width: 100vw;
+    justify-content: space-between;
+    margin: auto 13px;
 }
 
 .search-container {
@@ -49,6 +49,7 @@ form {
     font-weight: 500;
     text-indent: 49px;
     color: var(--darker-grey);
+    margin-right: 12px;
 }
 
 .search-box:focus {

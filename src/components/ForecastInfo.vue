@@ -50,10 +50,8 @@
                 :icon="nextDaysIcons[5]"
             />
         </div>
+        <span class="highlight-title">Today's Highlights</span>
         <div class="highlight-area">
-            <div class="highlight-title">
-                <span>Today's Highlights</span>
-            </div>
             <div class="highlights">
                 <WindStatus
                     class="highlights-child"
@@ -180,14 +178,22 @@ export default {
     .forecast {
         display: flex;
         flex-direction: column;
-        padding: 0 125px 0 154px;
+    }
+
+    .forecast > div {
+        margin-left: 20px;
+        margin-right: 20px;
     }
     .unit {
-        justify-content: flex-end;
+        align-self: flex-end;
+        max-width: 100px;
     }
 
     .highlight-title {
-        margin-left: -100px;
+        align-self: flex-start;
+        max-width: 706px;
+        padding-left: 20px;
+        margin-right: 20px;
     }
     .highlights {
         display: grid;
@@ -195,95 +201,10 @@ export default {
         gap: 48px;
     }
 }
-</style>
 
-<!-- <style scoped>
-.forecast {
-    background-color: #100e1d;
-    box-sizing: border-box;
-    padding: 40px 120px 100px 154px;
-}
-
-.unit {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 40px;
-    margin-bottom: 66px;
-}
-
-.buttons {
-    margin-right: 15px;
-}
-
-.days-area {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-}
-
-.highlight-title {
-    margin-top: 72px;
-    margin-bottom: 32px;
-    font-size: 24px;
-    font-weight: 700;
-}
-
-.highlights {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-}
-
-.footer {
-    margin-top: 112px;
-}
-
-@media (max-width: 375px) {
-    .forecast {
-        padding: 0;
-    }
-
+@media (min-width: 1200px) {
     .unit {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
-
-    .days-area {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        padding: 20px 55px 0px 54px;
-        margin-top: 30px;
-    }
-
-    .highlight-area {
-        padding: 0 24px 0 23px;
-    }
-
-    .highlight-title {
-        margin-top: 19px;
-        margin-bottom: 32px;
-        font-size: 24px;
-        font-weight: 700;
-    }
-
-    .highlights {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 32px;
-    }
-
-    .footer {
-        margin-top: 96px;
-        margin-bottom: 24px;
-        font-size: 14px;
+        max-width: 100px;
     }
 }
-
-/* @media (min-width: 376px) and (max-width: 1366px) {
-    .forecast {
-        padding: 10px 50px 100px 50px;
-    }
-} */
-</style> -->
+</style>
