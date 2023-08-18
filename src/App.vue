@@ -38,8 +38,8 @@
             :sunset="dailyWeather.sunset"
             :temperatureUnit="temperatureUnit"
             :nextDaysIcons="nextDaysIcons"
-            @change-unit-to-f="receiveUnitF"
             @change-unit-to-c="receiveUnitC"
+            @change-unit-to-f="receiveUnitF"
         />
     </div>
 </template>
