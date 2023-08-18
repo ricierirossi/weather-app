@@ -17,7 +17,7 @@
             <div class="weather">{{ weather }}</div>
             <div class="today-date">
                 <span>Today</span>
-                <span class="dot">•</span>
+                <span class="dot"> • </span>
                 <span>{{ today }}</span>
             </div>
             <div class="city">
@@ -54,12 +54,10 @@ export default {
             this.$emit('get-coordinates')
         }
     },
-    beforeUpdate() {
+    created() {
+        this.formatDate(this.time)
         this.formatDate(this.time)
         this.icon = '../src/assets/svg/' + this.icons + '.svg'
-    },
-    mounted() {
-        this.formatDate(this.time)
     },
     watch: {
         temperatureUnit: {
@@ -151,6 +149,10 @@ export default {
 
 .dot {
     margin: 0 16px 0 16px;
+}
+
+.dot {
+    margin: 0 15px;
 }
 
 .city {
