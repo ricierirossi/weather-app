@@ -52,28 +52,3 @@ export default {
     padding-right: 10px;
 }
 </style>
-
-<!-- <style scoped>
-.highlight-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #1e213a;
-}
-
-.title {
-    margin-top: 22px;
-}
-
-.sunset {
-    display: flex;
-    align-items: center;
-    font-size: 24px;
-}
-
-@media (max-width: 375px) {
-    .highlight-card {
-        width: 328px;
-    }
-}
-</style> -->

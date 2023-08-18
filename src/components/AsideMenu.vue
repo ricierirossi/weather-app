@@ -88,6 +88,10 @@ export default {
     margin: 12px 12px 24px auto;
 }
 
+.close:hover {
+    cursor: pointer;
+}
+
 .search-location {
     box-sizing: content-box;
 }
@@ -109,6 +113,7 @@ export default {
 }
 .city:hover {
     border: solid 1px var(--darker-grey);
+    cursor: pointer;
 }
 
 .chevron-right {
@@ -118,5 +123,23 @@ export default {
 }
 
 @media (min-width: 768px) {
+    .city {
+        margin-top: 20px;
+        width: 240px;
+    }
+
+    .chevron-right {
+        left: 230px;
+    }
+}
+
+@media (min-width: 992px) {
+    .city {
+        width: 93%;
+    }
+
+    .chevron-right {
+        left: 334px;
+    }
 }
 </style>

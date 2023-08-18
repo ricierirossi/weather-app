@@ -162,6 +162,11 @@ export default {
 }
 
 @media (min-width: 768px) {
+    .buttons {
+        padding-left: 0;
+        padding-right: 0;
+        justify-content: space-around;
+    }
     .today,
     .wallpaper {
         width: 100%;
@@ -183,143 +188,3 @@ export default {
     }
 }
 </style>
-
-<!-- <style scoped>
-.menu {
-    background-color: #1e213a;
-    width: 459px;
-}
-
-.buttons {
-    display: flex;
-    margin: 42px 0 21px 46px;
-}
-
-.local-button {
-    margin-left: 166px;
-}
-
-.today {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.wallpaper {
-    position: relative;
-}
-
-.clouds {
-    background-image: url('../assets/images/Cloud-background.png');
-    background-position: center;
-    width: 459px;
-    height: 376px;
-    opacity: 10%;
-}
-
-.icon {
-    position: absolute;
-    left: 105px;
-    top: 63px;
-    width: 250px;
-    height: 250px;
-}
-
-.temperature-info {
-    margin-top: 33px;
-}
-
-.temperature {
-    font-weight: 500;
-    font-size: 144px;
-    line-height: 169.06px;
-    color: #e7e7eb;
-}
-
-.degree {
-    font-weight: 100;
-    font-size: 48px;
-    color: #a09fb1;
-}
-
-.weather {
-    margin-top: 87px;
-    font-size: 36px;
-    font-weight: 600;
-    color: #88869d;
-}
-
-.today-date {
-    margin-top: 87px;
-    margin-bottom: 31px;
-    font-size: 18px;
-    font-weight: 500;
-    color: #88869d;
-}
-
-.dot {
-    margin: 0 16px 0 16px;
-}
-
-.city {
-    display: flex;
-    justify-content: center;
-}
-
-.place {
-    height: 19px;
-    width: 14px;
-    color: #88869d;
-    margin-right: 15px;
-}
-
-.city-name {
-    font-weight: 600px;
-    font-size: 18px;
-    color: #88869d;
-}
-
-@media (max-width: 375px) {
-    .menu {
-        width: 375px;
-    }
-
-    .buttons {
-        display: flex;
-        margin: 29px 12px 0 11px;
-    }
-
-    .local-button {
-        margin-left: 151px;
-    }
-    .wallpaper {
-        position: relative;
-    }
-
-    .clouds {
-        background-size: cover;
-        width: 375px;
-        height: 326px;
-    }
-
-    .icon {
-        left: 63px;
-    }
-
-    .temperature-info {
-        margin-top: 0px;
-    }
-
-    .weather {
-        margin-top: 23px;
-    }
-
-    .today-date {
-        margin-top: 48px;
-    }
-
-    .place {
-        margin-bottom: 103px;
-    }
-}
-</style> -->

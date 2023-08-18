@@ -82,79 +82,18 @@ form {
 
 @media (min-width: 768px) {
     form {
-        width: 100%;
-        gap: 12px;
-    }
-
-    .search-box {
-        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
     }
 }
 
 @media (min-width: 992px) {
+    form {
+        flex-direction: row;
+    }
     .search-box {
         width: 268px;
     }
 }
 </style>
-
-<!-- <style scoped>
-form {
-    display: flex;
-    margin-top: 38px;
-    height: 48px;
-    width: 459px;
-}
-.search-box {
-    width: 262px;
-    margin-left: 47px;
-    border: solid 1px #616475;
-    border-radius: 0;
-    background-color: #1e213a;
-    color: #616475;
-    text-indent: 49px;
-}
-
-.search-box:focus {
-    outline: none;
-    border: solid 1px #e7e7eb;
-}
-
-.search {
-    position: absolute;
-    height: 17px;
-    width: 17px;
-    left: 62px;
-    top: 97px;
-    color: #616475;
-}
-
-.submit-button {
-    all: unset;
-    width: 86px;
-    border: solid 1px #3c47e9;
-    background-color: #3c47e9;
-    text-align: center;
-    font-size: 16px;
-    margin-left: 12px;
-}
-
-.submit-button:hover {
-    cursor: pointer;
-}
-
-@media (max-width: 375px) {
-    form {
-        margin-top: 38px;
-        width: 375px;
-    }
-    .search-box {
-        width: 246px;
-        margin-left: 13px;
-    }
-
-    .search {
-        left: 28px;
-    }
-}
-</style> -->
