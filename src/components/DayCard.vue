@@ -30,7 +30,6 @@ export default {
         }
     },
     beforeUpdate() {
-        // this.icons = '../src/assets/svg/' + this.icon + '.svg'
         this.icons = new URL(`../assets/svg/${this.icon}.svg`, import.meta.url).href
     }
 }
