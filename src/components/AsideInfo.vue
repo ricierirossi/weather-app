@@ -57,7 +57,7 @@ export default {
     created() {
         this.formatDate(this.time)
         this.formatDate(this.time)
-        this.icon = require('~/assets/svg/' + this.icons + '.svg')
+        // this.icon = '../src/assets/svg/' + this.icons + '.svg'
     },
     watch: {
         temperatureUnit: {
@@ -67,7 +67,13 @@ export default {
         },
         icons: {
             handler(newIcon) {
-                this.icon = '../src/assets/svg/' + newIcon + '.svg'
+                // this.icon = '../src/assets/svg/' + newIcon + '.svg'
+                // this.icon = new URL(`@/assets/svg/${newIcon}.svg`, import.meta.url).href
+                // this.icon = '@/assets/svg/' + newIcon + '.svg'
+                // this.icon = new URL('@/assets/svg/clear-day.svg', import.meta.url).href
+                this.icon = new URL(`../assets/svg/${newIcon}.svg`, import.meta.url).href
+                console.log(newIcon)
+                console.log(this.icon)
             }
         }
     }
