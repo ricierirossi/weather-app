@@ -15,8 +15,6 @@ export default {
         return {
             sunriseTime: null,
             icon: new URL('../assets/svg/sunrise.svg', import.meta.url).href
-            // icon: '../src/assets/svg/sunrise.svg'
-            // icon: new URL('../src/assets/svg/sunrise.svg', import.meta.url).href
         }
     },
     methods: {

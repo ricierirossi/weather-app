@@ -14,7 +14,7 @@ export default {
     data: function () {
         return {
             sunsetTime: null,
-            icon: '../src/assets/svg/sunset.svg'
+            icon: new URL('../assets/svg/sunset.svg', import.meta.url).href
         }
     },
     methods: {
