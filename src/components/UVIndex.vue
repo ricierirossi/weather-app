@@ -15,6 +15,7 @@ export default {
     },
     beforeUpdate() {
         this.icon = '../src/assets/svg/uv-index-' + this.uVIndex.toFixed(0) + '.svg'
+        this.icon = new URL(`../assets/svg/${this.uVIndex.toFixed(0)}.svg`, import.meta.url).href
     }
 }
 </script>
