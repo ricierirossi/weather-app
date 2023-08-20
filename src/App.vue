@@ -222,11 +222,10 @@ export default {
                     this.coordinates.latitude = result.features[0].properties.lat
                     this.coordinates.longitude = result.features[0].properties.lon
                 })
-                .catch(() => console.log('City not foud. Check spelling and try again.'))
+                .catch(() => alert('City not foud. Check spelling and try again.'))
             this.visible = !this.visible
         }
     },
-    // created() {
     mounted() {
         this.getLocation()
         this.watchLocation()
