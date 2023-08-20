@@ -126,6 +126,7 @@ export default {
     font-weight: 600;
     color: var(--light-grey);
     margin: 23px 0 48px 0;
+    text-align: center;
 }
 
 .today-date {
