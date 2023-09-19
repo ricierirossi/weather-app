@@ -25,3 +25,6 @@ Free to use animated SVG weather icons. Handcrafted by [Bas Milius](https://bas.
 ## APIs
  <a href='https://open-meteo.com/en/docs'>Weather Forecast API</a> <br/>
  <a href='https://apidocs.geoapify.com/'>Reverse Geocode API</a>
+
+## Attention
+Need a lifecycle fix
